@@ -5,13 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tablero de Triqui</title>
 <style>
+    * {
+        --primario: #595959;
+        --secundario: #a1a1a1;
+        --tercero: #919191;
+    }
+
     body {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
         margin: 0;
-        background-color: #3498db; /* Color de fondo azul */
+        background-color: var(--primario); /* Color de fondo azul */
     }
 
     .board {
@@ -19,7 +25,7 @@
         grid-template-columns: repeat(3, 100px); /* 3 columnas de 100px cada una */
         grid-template-rows: repeat(3, 100px); /* 3 filas de 100px cada una */
         gap: 2px; /* Espacio entre las celdas */
-        background-color: white; /* Color de fondo del tablero */
+        background-color: var(--secundario); /* Color de fondo del tablero */
         padding: 10px; /* Espacio interno del tablero */
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra ligera */
     }
@@ -28,15 +34,17 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 2px solid #3498db; /* Borde azul */
-        font-size: 24px;
+        border: 2px solid var(--primario); /* Borde azul */
+        font-size: 32px;
         font-weight: bold;
         cursor: pointer;
+        color: var(--primario);
     }
 
     .cell:hover {
-      background-color: #3498db;
-      box-shadow: 0 0 5px #0653f8;
+      background-color: var(--primario);
+      box-shadow: 0 0 5px var(--tercero);
+      color: var(--secundario);
     }
 </style>
 </head>
@@ -52,5 +60,6 @@
       <div class="cell"></div>
       <div class="cell"></div>
   </div>
+  <script src="app.js"></script>
 </body>
 </html>
