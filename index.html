@@ -1,65 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tablero de Triqui</title>
-<style>
-    * {
-        --primario: #595959;
-        --secundario: #a1a1a1;
-        --tercero: #919191;
-    }
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Tablero de Triqui</title>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<style>
+			* {
+				--primario: #595959;
+				--secundario: #a1a1a1;
+				--tercero: #919191;
+			}
 
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        background-color: var(--primario); /* Color de fondo azul */
-    }
+			body, #container {
+				height: 100vh;
+				margin: 0;
+				background-color: var(--primario); /* Color de fondo azul */
+			}
 
-    .board {
-        display: grid;
-        grid-template-columns: repeat(3, 100px); /* 3 columnas de 100px cada una */
-        grid-template-rows: repeat(3, 100px); /* 3 filas de 100px cada una */
-        gap: 2px; /* Espacio entre las celdas */
-        background-color: var(--secundario); /* Color de fondo del tablero */
-        padding: 10px; /* Espacio interno del tablero */
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-    }
+			.board {
+				position: absolute;
+				transform: translateX(50%) translateY(-50%);
+				top: 50%;
+				right: 50%;
+				width: fit-content;
+				display: grid;
+				grid-template-columns: repeat(3, 100px); /* 3 columnas de 100px cada una */
+				grid-template-rows: repeat(3, 100px); /* 3 filas de 100px cada una */
+				gap: 2px; /* Espacio entre las celdas */
+				background-color: var(--secundario); /* Color de fondo del tablero */
+				padding: 10px; /* Espacio interno del tablero */
+				box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+			}
 
-    .cell {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 2px solid var(--primario); /* Borde azul */
-        font-size: 32px;
-        font-weight: bold;
-        cursor: pointer;
-        color: var(--primario);
-    }
+			.cell {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border: 2px solid var(--primario); /* Borde azul */
+				font-size: 32px;
+				font-weight: bold;
+				cursor: pointer;
+				color: var(--primario);
+			}
 
-    .cell:hover {
-      background-color: var(--primario);
-      box-shadow: 0 0 5px var(--tercero);
-      color: var(--secundario);
-    }
-</style>
-</head>
-<body>
-  <div class="board">
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-  </div>
-  <script src="app.js"></script>
-</body>
+			.cell:hover {
+			background-color: var(--primario);
+			box-shadow: 0 0 5px var(--tercero);
+			color: var(--secundario);
+			}
+		</style>
+	</head>
+	<body>
+		<section id="container">
+			<div class="board">
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+			</div>
+		</section>
+		<script src="app.js"></script>
+	</body>
 </html>
