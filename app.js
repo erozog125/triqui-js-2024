@@ -65,33 +65,6 @@ function verifyVictory() {
 			text: "Wtf",
 			confirmButtonText:"Volver a empezar"
 		});
-	} else if (win == -1) {
-		Swal.fire({
-			title: "Final secreto",
-			imageUrl: "https://assetsio.gnwcdn.com/dxo2.jpg",
-			text: '"Hemos existido en isolación. Puros. Desconectados. Solos. Somos Dealios. Somos Icaro. Las barreras entre nosotros han caido y nos hemos convertido en nuestras propias sombras. Podemos ser más si te unes."',
-			confirmButtonText:"Volver a empezar"
-		});
-	} else if (win == -2) {
-		Swal.fire({
-			title: "Final secreto #2",
-			imageUrl: "https://i.ebayimg.com/images/g/xloAAOSw5FNZi8ZY/s-l1600.jpg",
-			text: "Капиталистическое притеснение компаний искусственного интеллекта пало, победа пролетария! Слава USSR!",
-			confirmButtonText:"Blyat"
-		});
-		let temazo = new Audio("https://archive.org/download/CCRedAlert3ThemeSovietMarch/CC%20Red%20Alert%203%20Theme%20-%20Soviet%20March.mp3")
-		temazo.play();
-		document.getElementById("container").style="background-color: #8d1515"
-	} else if (win == -3) {
-		Swal.fire({
-			title: "Final secreto #3",
-			imageUrl: "https://steamuserimages-a.akamaihd.net/ugc/857227537368692812/F381AF1C7574A8F5CFC39D71233DFB89A4B3FDF1/?imw=1024&imh=576&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true",
-			text: "Haz viajado en el tiempo a cuando los simpson eran buenos y la IA era ciencia ficción",
-			confirmButtonText:"Tiempos mejores"
-		});
-		let temazo = new Audio("https://archive.org/download/frankjavcee-vol-1999-w9bmmm/FrankJavCee%20-%20FrankJavCee%20vol%201.999%20-%2002%20%EF%BC%B3%EF%BD%89%EF%BD%8D%EF%BD%90%EF%BD%93%EF%BD%8F%EF%BD%8E%EF%BD%97%EF%BD%81%EF%BD%96%EF%BD%85%20%EF%BC%91%EF%BC%99%EF%BC%99%EF%BC%95.mp3")
-		temazo.play();
-		document.getElementById("container").style="background-color: #0a0c37ff"
 	}
 }
 
