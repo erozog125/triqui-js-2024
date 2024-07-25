@@ -21,8 +21,8 @@ body {
 .board {
     font-family: 'Courier New', Courier, monospace;
     display: grid;
-    grid-template-columns: repeat(3, 200px); 
-    grid-template-rows: repeat(3, 200px);
+    grid-template-columns: repeat(3, 160px); 
+    grid-template-rows: repeat(3, 160px);
     gap: 10px; 
     background-color: transparent;
     padding: 10px;
