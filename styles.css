@@ -16,6 +16,7 @@ body {
     color: #F0F0F0;
     user-select: none;
     margin: 10px;
+    text-align: center;
 }
 
 .board {
@@ -46,3 +47,27 @@ body {
   background-color: #ffaf2e9e;
   box-shadow: 0 0 5px #ffaf2ea2;
 }
+
+        @media screen and (max-width: 480px) {
+            .title {
+                font-size: 2.5rem;
+                text-align: center;
+                margin-top: 4rem;
+            }
+            .title h1 {
+                margin: 0 auto;
+            }
+
+            .board {
+                grid-template-columns: repeat(3, 100px); 
+                grid-template-rows: repeat(3, 100px);
+                gap: 6px;
+                margin: 2rem 0 5rem 0;
+            }
+
+            .cell {
+                font-size: 3rem;
+                width: 100px;
+                height: 100px;
+            }
+        }
