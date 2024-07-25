@@ -1,7 +1,6 @@
 body {
     font-family: "Raleway", sans-serif;
     font-weight: bold;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,12 +21,13 @@ body {
 .board {
     font-family: 'Courier New', Courier, monospace;
     display: grid;
-    grid-template-columns: repeat(3, 200px); /* 3 columnas de 200px cada una */
-    grid-template-rows: repeat(3, 200px); /* 3 filas de 200px cada una */
-    gap: 10px; /* Espacio entre las celdas */
+    grid-template-columns: repeat(3, 200px); 
+    grid-template-rows: repeat(3, 200px);
+    gap: 10px; 
     background-color: transparent;
-    padding: 10px; /* Espacio interno del tablero */
+    padding: 10px;
     text-shadow: 0 0 5px #454646;
+    margin-bottom: 5rem;
 }
 
 .cell {
