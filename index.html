@@ -3,54 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles/index.css">
 <title>Tablero de Triqui</title>
-<style>
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        background-color: #3498db; /* Color de fondo azul */
-    }
-
-    .board {
-        display: grid;
-        grid-template-columns: repeat(3, 100px); /* 3 columnas de 100px cada una */
-        grid-template-rows: repeat(3, 100px); /* 3 filas de 100px cada una */
-        gap: 2px; /* Espacio entre las celdas */
-        background-color: white; /* Color de fondo del tablero */
-        padding: 10px; /* Espacio interno del tablero */
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-    }
-
-    .cell {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 2px solid #3498db; /* Borde azul */
-        font-size: 24px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-
-    .cell:hover {
-      background-color: #3498db;
-      box-shadow: 0 0 5px #0653f8;
-    }
-</style>
 </head>
 <body>
-  <div class="board">
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
+    <div class="choose" id="chooseDiv">
+        <h2>Elige tu... personaje?, creo:</h2>
+        <img class="size" id="equis" src="images/equis.png" alt="">
+        <img class="size" id="circle" src="images/circle.png" alt="">
+    </div>
+  <div class="board" id="boardDiv">
+      <div id="one" class="cell"></div>
+      <div id="two" class="cell"></div>
+      <div id="three" class="cell"></div>
+      <div id="four" class="cell"></div>
+      <div id="five" class="cell"></div>
+      <div id="six" class="cell"></div>
+      <div id="seven" class="cell"></div>
+      <div id="eight" class="cell"></div>
+      <div id="nine" class="cell"></div>
   </div>
 </body>
+<script src="game.js"></script>
 </html>
