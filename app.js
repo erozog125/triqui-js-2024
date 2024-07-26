@@ -45,15 +45,16 @@ function handleClick() {
     for (let indexRow = 0; indexRow < lockersList.length; indexRow++) {
         for (let indexColumn = 0; indexColumn < lockersList[indexRow].length; indexColumn++) {
             const element = lockersList[indexRow][indexColumn];
-            element.addEventListener('click', ()=> {
-                if(isEmpty(lockersList, indexRow, indexColumn)) {
+            if(isEmpty(lockersList, indexRow, indexColumn)) {
+                element.addEventListener('click', ()=> {
                     element.textContent = 'X';
                     element.style.color = '#F54104'
                     statusLockers[indexRow][indexColumn] = 'x';
-                }
-                machineTurn();
-                verifyWinner();
-            });
+                    machineTurn();
+                    verifyWinner();
+                }); 
+            }
+            
         }
     }
 }
@@ -62,7 +63,7 @@ function machineTurn () {
     do {
         rowChooseMachine = getRandomNumber(0, 2);
         columnChooseMachine = getRandomNumber(0, 2);
-    } while (!isEmpty(lockersList, rowChooseMachine, columnChooseMachine));
+    } while (!isEmpty(lockersList, rowChooseMachine, columnChooseMachine) && !verifyFullTable());
 
     lockersList[rowChooseMachine][columnChooseMachine].textContent = 'O';
     lockersList[rowChooseMachine][columnChooseMachine].style.color = '#03F7A8';
@@ -80,6 +81,7 @@ function verifyWinner() {
         (statusLockers[0][0] === 'x' && statusLockers[1][1] === 'x' && statusLockers[2][2] === 'x') ||
         (statusLockers[0][2] === 'x' && statusLockers[1][1] === 'x' && statusLockers[2][0] === 'x')) {
         showWinner("¡Ganaste! 😄");
+        return;
     }
      //Verificar todas las posibles combinaciones ganadoras para la Máquina
     if ((statusLockers[0][0] === 'o' && statusLockers[0][1] === 'o' && statusLockers[0][2] === 'o') ||
@@ -91,6 +93,7 @@ function verifyWinner() {
         (statusLockers[0][0] === 'o' && statusLockers[1][1] === 'o' && statusLockers[2][2] === 'o') ||
         (statusLockers[0][2] === 'o' && statusLockers[1][1] === 'o' && statusLockers[2][0] === 'o')) {
         showWinner("¡Perdiste! 😞");
+        return;
     }
 }
 
@@ -113,6 +116,17 @@ function showWinner(message) {
     });
 }
 
+function verifyFullTable() {
+    let counter = 0;
+    statusLockers.forEach((row, rowIndex) => {
+        row.forEach((cell, columnIndex) => {
+            if (!isEmpty(lockersList, rowIndex, columnIndex)) {
+                counter++;
+            }
+        });
+    });
+    return counter===9;
+}
 function reloadGame() {
     rowChooseMachine = 0;
     columnChooseMachine = 0;
