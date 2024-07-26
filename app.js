@@ -1,74 +1,75 @@
-//Selecciona todas las celdas del tablero
-const cells= document.querySelectorAll("cell")
+// Selecciona todas las celdas del tablero
+const cells = document.querySelectorAll('[data-cell]');
+// Inicializa el turno de los jugadores, empezando con 'X'
+let isCircleTurn = false;
 
-//Inicia el turno de los jugadores empezando por x
-let isCircleturn = false
+// Define todas las combinaciones ganadoras posibles
+const winningCombinations = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6]
+];
 
-//Define las combinaciones ganadoras
-const winningCombinations =[
-    [0,1,2],
-    [3,4,5],
-    [6,7,8],
-    [0,3,6],
-    [1,4,7],
-    [2,5,8],
-    [0,4,8],
-    [2,4,6]
-]
-
-//Código para que maneje el click en una celda
-const handleclick =(e)=>{
-    const  cell =e.target
-//Si la celda está vacia, colocará una marca
-    if (cell.textcontent===""){
-        //Linea de codigo en el que se colocará la x o el o dependiendo del turno
-        cell.textcontent = isCircleturn ? "O" : "X"
-        cell.classlist.add(isCircleturn ? "O" : "X")
-        //Verifica si el jugador actual ha ganado
-        if (checkwin(isCircleturn ? "O":"X")){
-            //Muestra mensaje de victoria y reinicia el juego
-            settimeout(()=>alert(`${isCircleturn ? "O" : "X"}gana!`),10)
-            settimeout(startgame, 1000)
-        }else if (isDraw()){
-            //Muestra mensaje de empate y que se reinicie el juego
-            settimeout(()=>alert("Empate!"),10)
-            settimeput(startgame,1000)
-        }else{
-            //Cambia el turno al otro jugador
-            isCircleturn=!isCircleturn
-        }
+// Función que maneja el clic en una celda
+const handleClick = (e) => {
+  const cell = e.target;
+  // Si la celda está vacía, coloca una marca
+  if (cell.textContent === '') {
+    // Coloca 'O' o 'X' dependiendo del turno
+    cell.textContent = isCircleTurn ? 'O' : 'X';
+    // Añade la clase correspondiente para estilizar la celda
+    cell.classList.add(isCircleTurn ? 'circle' : 'x');
+    // Verifica si el jugador actual ha ganado
+    if (checkWin(isCircleTurn ? 'circle' : 'x')) {
+      // Muestra un mensaje de victoria y reinicia el juego después de 1 segundo
+      setTimeout(() => alert(`${isCircleTurn ? 'O' : 'X'} gana!`), 10);
+      setTimeout(startGame, 1000);
+    } else if (isDraw()) {
+      // Si hay empate, muestra un mensaje y reinicia el juego después de 1 segundo
+      setTimeout(() => alert('Empate!'), 10);
+      setTimeout(startGame, 1000);
+    } else {
+      // Cambia el turno al otro jugador
+      isCircleTurn = !isCircleTurn;
     }
-}
+  }
+};
 
-//Funcion que verifica que el jugador actual ha ganado
-const checkwin=(currentclass)=>{
-    //Recorre todas las combinaciones 
-    return winningCombinations.some(combination =>{
-        //Verifica si todas las celdad de una combinación estan ocupadas por el jugador que esta jugando actualmente
-        return combination.very(index =>{
-            return cells[index].classlist.conatins(currentclass)
-        })
-    })
-}
+// Función que verifica si el jugador actual ha ganado
+const checkWin = (currentClass) => {
+  // Recorre todas las combinaciones ganadoras
+  return winningCombinations.some(combination => {
+    // Verifica si todas las celdas de una combinación están ocupadas por el jugador actual
+    return combination.every(index => {
+      return cells[index].classList.contains(currentClass);
+    });
+  });
+};
 
-//Funcion verifica si hay un empate
-const isDraw=()=>{
-    return [...cells].every(cell =>{
-        return cell.classlist.contains("X") || cell.classlist.conatins("O")
-    })
-}
+// Función que verifica si hay empate
+const isDraw = () => {
+  // Verifica si todas las celdas están ocupadas
+  return [...cells].every(cell => {
+    return cell.classList.contains('x') || cell.classList.contains('circle');
+  });
+};
 
-//Funcion que inicia el juego
-const startgame =()=>{
-    //Reinicia el turno al jugador O
-    isXturn=false
-    //Limpia todas las celads y añada el evento clic
-    cells.forEach(cell =>{
-        cell.classlits.remove("X","O")
-        cell.textContent=""
-        cell,addEventListener("Click", handleclick,{once:true})
-    })
-}
+// Función que inicia el juego
+const startGame = () => {
+  // Reinicia el turno al jugador 'X'
+  isCircleTurn = false;
+  // Limpia todas las celdas y añade el evento de clic
+  cells.forEach(cell => {
+    cell.classList.remove('x', 'circle');
+    cell.textContent = '';
+    cell.addEventListener('click', handleClick, { once: true });
+  });
+};
 
-//Inicia el juego
-startgame();
+// Inicia el juego al cargar la página
+startGame();
