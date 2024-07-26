@@ -48,15 +48,16 @@ function handleClick() {
     for (let indexRow = 0; indexRow < lockersList.length; indexRow++) {
         for (let indexColumn = 0; indexColumn < lockersList[indexRow].length; indexColumn++) {
             const element = lockersList[indexRow][indexColumn];
-            if(isEmpty(lockersList, indexRow, indexColumn)) {
-                element.addEventListener('click', ()=> {
+            element.addEventListener('click', ()=> {
+                if(isEmpty(lockersList, indexRow, indexColumn)) {
                     element.textContent = 'X';
                     element.style.color = '#F54104'
                     statusLockers[indexRow][indexColumn] = 'x';
                     machineTurn();
                     verifyWinner();
-                }); 
-            }
+                }
+                
+            });
             
         }
     }
@@ -112,7 +113,7 @@ function getRandomNumber(min, max) {
 
 // función que retorna true si la casilla se encuentra vacía
 function isEmpty(matriz, rowIndex, columnIndex) {
-    return matriz[rowIndex][columnIndex].textContent === ''? true : false;
+    return matriz[rowIndex][columnIndex].textContent == '';
 }
 
 // función que verifica que la tabla esté completamente llena
