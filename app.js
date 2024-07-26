@@ -85,7 +85,7 @@ function verifyWinner() {
         (statusLockers[0][2] === 'x' && statusLockers[1][2] === 'x' && statusLockers[2][2] === 'x') ||
         (statusLockers[0][0] === 'x' && statusLockers[1][1] === 'x' && statusLockers[2][2] === 'x') ||
         (statusLockers[0][2] === 'x' && statusLockers[1][1] === 'x' && statusLockers[2][0] === 'x')) {
-        showWinner("¡Ganaste! 😄");
+        setTimeout(()=>showWinner("¡Ganaste! 😄"), 500);
         return;
     }
      //Verificar todas las posibles combinaciones ganadoras para la Máquina
@@ -97,11 +97,11 @@ function verifyWinner() {
         (statusLockers[0][2] === 'o' && statusLockers[1][2] === 'o' && statusLockers[2][2] === 'o') ||
         (statusLockers[0][0] === 'o' && statusLockers[1][1] === 'o' && statusLockers[2][2] === 'o') ||
         (statusLockers[0][2] === 'o' && statusLockers[1][1] === 'o' && statusLockers[2][0] === 'o')) {
-        showWinner("¡Perdiste! 😞");
+        setTimeout(()=>showWinner("¡Perdiste! 😞"), 500);
         return;
     }
     if (verifyFullTable()) {
-        showWinner("¡Es un empate! 🤜🏼🤛🏼");
+        setTimeout(()=>showWinner("¡Es un empate! 🤜🏼🤛🏼"), 500);
     }
 }
 
