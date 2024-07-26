@@ -11,7 +11,8 @@
         align-items: center;
         height: 100vh;
         margin: 0;
-        background-color: #3498db; /* Color de fondo azul */
+        background: rgb(25,109,148);
+        background: linear-gradient(90deg, rgba(25,109,148,1) 0%, rgba(13,140,232,1) 47%, rgba(0,212,255,1) 100%);
     }
 
     .board {
@@ -19,28 +20,29 @@
         grid-template-columns: repeat(3, 100px); /* 3 columnas de 100px cada una */
         grid-template-rows: repeat(3, 100px); /* 3 filas de 100px cada una */
         gap: 2px; /* Espacio entre las celdas */
-        background-color: white; /* Color de fondo del tablero */
+        background-color: rgba(115,230,232,1); /* Color de fondo del tablero */
         padding: 10px; /* Espacio interno del tablero */
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+        box-shadow: 0 0 20px rgb(153, 0, 255); /* Sombra ligera */
     }
 
     .cell {
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 2px solid #3498db; /* Borde azul */
+        border: 2px solid #2477af; /* Borde azul */
         font-size: 24px;
         font-weight: bold;
         cursor: pointer;
     }
 
     .cell:hover {
-      background-color: #3498db;
+      background-color: #d8fde0;
       box-shadow: 0 0 5px #0653f8;
     }
 </style>
 </head>
 <body>
+    <div id="board2">
   <div class="board">
       <div class="cell"></div>
       <div class="cell"></div>
@@ -52,5 +54,8 @@
       <div class="cell"></div>
       <div class="cell"></div>
   </div>
+  <div id="turnos"> El turno es X</div>
+<script src="app.js"></script>
+</div>
 </body>
 </html>
