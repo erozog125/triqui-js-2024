@@ -36,17 +36,55 @@ Math.ceil(0.9)
 Math.floor(0.1)*/
 
 /*eleccion ususario*/ 
-let btnX = document.getElementById('btnX')
-let btnY = document.getElementById('btnY')
+const btnX = document.getElementById('btnX')
+const btnY = document.getElementById('btnY')
+let User = 0
 
 btnX.addEventListener('click', () => {
-    btnX = "X"
-    console.log(btnX);
+    User = "X"
+    both = "O"
+    console.log(User);
 })
 
 btnY.addEventListener('click', () => {
-    btnY = "Y"
-    console.log(btnY);
-
-
+    User = "O"
+    both = "X"
+    console.log(User);
 })
+
+/*tablero*/
+
+board = document.querySelectorAll('.cell')
+
+board[0].addEventListener('click',()=> {
+    board[0].textContent = "" + User 
+  })
+board[1].addEventListener('click',()=> {
+    board[1].textContent = "" + User 
+  })
+board[2].addEventListener('click',()=> {
+    board[2].textContent = "" + User 
+  })
+board[3].addEventListener('click',()=> {
+    board[3].textContent = "" + User 
+  })
+board[4].addEventListener('click',()=> {
+    board[4].textContent = "" + User 
+  })
+board[5].addEventListener('click',()=> {
+    board[5].textContent = "" + User 
+  })
+board[6].addEventListener('click',()=> {
+    board[6].textContent = "" + User 
+  })
+board[7].addEventListener('click',()=> {
+    board[7].textContent = "" + User 
+  })
+board[8].addEventListener('click',()=> {
+    board[8].textContent = + User 
+  })
+/* validacion */
+
+function validation(params) {
+    
+}
