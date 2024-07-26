@@ -50,21 +50,21 @@ function verifyVictory() {
 			title: "La humanidad ha ganado!",
 			text: "Waos",
 			confirmButtonText:"Volver a empezar"
-		});
+		}).then(reload);
 	} else if (win == 2) {
 		Swal.fire({
 			icon: "error",
 			title: "La \"\"IA\"\" ha ganado...",
 			text: "Ni modo",
 			confirmButtonText:"Volver a empezar"
-		});
+		}).then(reload);
 	} else if (getEmpty() == 0) {
 		Swal.fire({
 			imageUrl: "https://media1.tenor.com/m/tmE2xQBnGmMAAAAC/really-spongebob.gif",
 			title: "Ninguno de los dos ha ganado",
 			text: "Wtf",
 			confirmButtonText:"Volver a empezar"
-		});
+		}).then(reload);
 	}
 }
 
@@ -75,6 +75,20 @@ function getEmpty ()  {
 			if (grid[y][x] == 0)
 				res++
 	return res
+}
+
+function reload() {
+	grid = [
+		[0, 0, 0],
+		[0, 0, 0],
+		[0, 0, 0]
+	]
+	playing = true
+	win = 0
+	
+	gridVisual.forEach((e) => {
+		e.textContent = ""
+	})
 }
 
 function verifyValid(cords) {
