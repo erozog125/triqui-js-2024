@@ -88,3 +88,4 @@ board[8].addEventListener('click',()=> {
 function validation(params) {
     
 }
+
