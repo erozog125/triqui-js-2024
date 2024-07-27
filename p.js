@@ -2,6 +2,7 @@ const btnX = document.getElementById('btnX')
 const btnY = document.getElementById('btnY')
 let User = 0
 let gameStarted = false
+let boardGame = ["","","","","","","","",""]
 
 function disableButtons() {
     btnX.disabled = true
@@ -62,7 +63,30 @@ function resetGame() {
 }
 
 
-const resetButton = document.createElement('button')
-resetButton.textContent = "Reiniciar juego"
+/*juega maquina */
+
+const getRandomNumber =  (min, max)  => Math.round(Math.random() * (max - min) + min)
+
+function getRandomNumber() {
+    return Math.floor(Math.random() * 9)
+}
+
+
+function playMachine() {
+
+    let turnMachine
+    do {
+        turnMachine = getRa
+    } while (board[turnMachine] !== "" || gameOver);
+
+    board[turnMachine].textContent = both;
+    board[turnMachine] = both
+    gameOver()
+    
+}
+
+
+
+/* Reiniciar juego */
+resetButton = document.getElementById('resetGame')
 resetButton.addEventListener('click', resetGame)
-document.body.appendChild(resetButton)
