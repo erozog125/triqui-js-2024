@@ -5,18 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tablero de Triqui</title>
 <style>
-    html{
-      font-family: Arial, Helvetica, sans-serif;
+    html {
+        font-family: Arial, Helvetica, sans-serif;
     }
     body {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         height: 100vh;
         margin: 0;
         background-color: #3498db;
     }
-
     .board {
         display: grid;
         grid-template-columns: repeat(3, 100px);
@@ -26,7 +26,6 @@
         padding: 10px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     }
-
     .cell {
         display: flex;
         justify-content: center;
@@ -36,14 +35,24 @@
         font-weight: bold;
         cursor: pointer;
     }
-
     .cell:hover {
         background-color: #3498db;
         box-shadow: 0 0 5px #0653f8;
     }
-    .result{
-      width: 19rem;
-      text-align: center;
+    .result {
+        width: 19rem;
+        text-align: center;
+    }
+    .reset-button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 </style>
 </head>
@@ -58,9 +67,10 @@
       <div id="cell-2-0" class="cell"></div>
       <div id="cell-2-1" class="cell"></div>
       <div id="cell-2-2" class="cell"></div>
-      <div class="result"><Strong><p>Resultado</p></Strong></div>
   </div>
+  <button class="reset-button" onclick="resetGame()">Reiniciar Juego</button>
   
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="app.js"></script>
 </body>
 </html>

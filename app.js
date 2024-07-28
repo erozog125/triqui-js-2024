@@ -21,13 +21,20 @@ function onClickUser(event) {
     const [row, col] = cell.id.split('-').slice(1).map(Number);
     //Funcion que valida que la celda este vacia para enviar el movimiento del usuario
     if(emptyPosition(row,col,'X',cell)){
-        winner(); // Verifica si hay un ganador después del movimiento del usuario
+        //Condicional que indica si el jugador a ganado envie el mensaje 
+        if (winner('X')) {
+        showResult('¡Felicidades! Has ganado.');
+            return;
+        }
+        //en caso contrario permita la jugada de la maquina
         chooseCpu();
-        winner(); // Verifica si hay un ganador después del movimiento de la CPU
+        //Valida si la maquina gana
+        if (winner('O')) {
+            showResult('Lo siento, la máquina ha ganado.');
+        }
     }
-    
-   
 }
+
 //Hacemos una funcion
 function chooseCpu() {
     //Declamos un arreglo vacio para almacenar las coordenadas vacias del tablero
@@ -74,50 +81,51 @@ function winner() {
     // Verificar filas
     for (let row = 0; row < 3; row++) {
         if (board[row][0] !== '' && board[row][0] === board[row][1] && board[row][1] === board[row][2]) {
-            updateResult(board[row][0] + ' Gana');
-            setTimeout(reload,800)
-            return;
+            return true;
         }
     }
 
     // Verificar columnas
     for (let col = 0; col < 3; col++) {
         if (board[0][col] !== '' && board[0][col] === board[1][col] && board[1][col] === board[2][col]) {
-            updateResult(board[0][col] + ' Gana!');
-            setTimeout(reload,800)
-            return;
+            return true;
         }
     }
 
     // Verificar diagonal principal
     if (board[0][0] !== '' && board[0][0] === board[1][1] && board[1][1] === board[2][2]) {
-         updateResult(board[0][0] + ' Gana!');
-         setTimeout(reload,800)
-        return;
+        return true;
     }
 
     // Verificar diagonal secundaria
     if (board[0][2] !== '' && board[0][2] === board[1][1] && board[1][1] === board[2][0]) {
-        updateResult(board[0][2] + ' Gana!');
-        setTimeout(reload,800)
-        return;
+        return true;
     }
 
     //Condicional que nos indica si hay un empate 
     if (isDraw()) {
-        updateResult('Es un Empate');
-        setTimeout(reload,1000)
-        return;
+        showResult('Es un Empate');
+        return true;
     }
+
+    return false;
 }
 
-
-function updateResult(message) {
-    //Envia el mensaje segun el resultado
-    const resultElement = document.querySelector('.result');
-    resultElement.textContent = message;
+function showResult(message) {
+    //llama a la funcion  de sWeetAlert
+    Swal.fire({
+        //Mensaje que se mostrara en la alerta
+        title: message,
+        //Texto que se mostrara en el boton
+        confirmButtonText: 'Reiniciar Juego',
+        //No permite cerrar la alerta haciendo click fuera de ella
+        allowOutsideClick: false
+        //.then es lo que se ejecutara al hacer click
+    }).then(() => {
+        //Reinicia los valores del juego
+        resetGame();
+    });
 }
-
 
 function isDraw() {
     // Recorremos cada fila y columna del tablero
@@ -133,7 +141,15 @@ function isDraw() {
     return true;
 }
 
-function reload(){
-    //Reinicia la pagina a su estado original del juego
-    location.reload();
+function resetGame() {
+    // Recorre cada  fila y columna para reiniciar como campos vacios 
+    for (let row = 0; row < 3; row++) {
+        for (let col = 0; col < 3; col++) {
+            board[row][col] = '';
+        }
+    }
+    // Restablece las celdas a campos vacios
+    cells.forEach(cell => {
+        cell.textContent = '';
+    });
 }
