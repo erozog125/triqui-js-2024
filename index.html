@@ -5,13 +5,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tablero de Triqui</title>
 <style>
-    body {
+    .titular{
+        margin-top: 60px;
+        margin-bottom: 0;
+        
+    }
+
+    .game-restart{
+        color: aliceblue;
+        background-color: rgb(6, 30, 6);
+        border-radius: 10%;
         display: flex;
+
+    }
+    h1{
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        background-color:rgb(6, 30, 6);
+        color: rgba(165, 168, 0, 0.819);
+        border-radius: 10px;
+    }
+    h2{
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        background-color: rgb(6, 30, 6);
+        color: rgba(165, 168, 0, 0.819);
+        border-radius: 10px;
+    }
+    body{
+        display:flex ;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         height: 100vh;
         margin: 0;
-        background-color: #3498db; /* Color de fondo azul */
+        background-color: #1c4d1f; /* Color de fondo azul */
     }
 
     .board {
@@ -28,19 +54,20 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 2px solid #3498db; /* Borde azul */
+        border: 2px solid #14532d; /* Borde azul */
         font-size: 24px;
         font-weight: bold;
         cursor: pointer;
     }
 
     .cell:hover {
-      background-color: #3498db;
-      box-shadow: 0 0 5px #0653f8;
+      background-color: #0d5818;
+      box-shadow: 0 0 5px #3b6141;
     }
 </style>
 </head>
 <body>
+    <h1 class="tittle1" >Diviertete :)</h1>
   <div class="board">
       <div class="cell"></div>
       <div class="cell"></div>
@@ -52,5 +79,9 @@
       <div class="cell"></div>
       <div class="cell"></div>
   </div>
+  <h2 class="tittle2" >Turno del jugador</h2>
+  <button class="game-restart">Reiniciar Juego</button>
+  <script src="triki.js"></script>
+  <p class="titular">@Julian Mancipe</p>
 </body>
 </html>
