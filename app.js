@@ -1,75 +1,77 @@
-// Selecciona todas las celdas del tablero
-const cells = document.querySelectorAll('[data-cell]');
-// Inicializa el turno de los jugadores, empezando con 'X'
-let isCircleTurn = false;
-
-// Define todas las combinaciones ganadoras posibles
+let currentPlayer = 'X';
+const cells = document.querySelectorAll('.cell');
 const winningCombinations = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6]
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
 ];
 
-// Función que maneja el clic en una celda
-const handleClick = (e) => {
-  const cell = e.target;
-  // Si la celda está vacía, coloca una marca
-  if (cell.textContent === '') {
-    // Coloca 'O' o 'X' dependiendo del turno
-    cell.textContent = isCircleTurn ? 'O' : 'X';
-    // Añade la clase correspondiente para estilizar la celda
-    cell.classList.add(isCircleTurn ? 'circle' : 'x');
-    // Verifica si el jugador actual ha ganado
-    if (checkWin(isCircleTurn ? 'circle' : 'x')) {
-      // Muestra un mensaje de victoria y reinicia el juego después de 1 segundo
-      setTimeout(() => alert(`${isCircleTurn ? 'O' : 'X'} gana!`), 10);
-      setTimeout(startGame, 1000);
-    } else if (isDraw()) {
-      // Si hay empate, muestra un mensaje y reinicia el juego después de 1 segundo
-      setTimeout(() => alert('Empate!'), 10);
-      setTimeout(startGame, 1000);
-    } else {
-      // Cambia el turno al otro jugador
-      isCircleTurn = !isCircleTurn;
+// Función para manejar el clic en una celda
+function handleClick(event) {
+    const cell = event.target;
+    
+    // Verificar si la celda ya está ocupada
+    if (cell.textContent !== '') {
+        return;
     }
-  }
-};
 
-// Función que verifica si el jugador actual ha ganado
-const checkWin = (currentClass) => {
-  // Recorre todas las combinaciones ganadoras
-  return winningCombinations.some(combination => {
-    // Verifica si todas las celdas de una combinación están ocupadas por el jugador actual
-    return combination.every(index => {
-      return cells[index].classList.contains(currentClass);
+    // Marcar la celda con el jugador actual
+    cell.textContent = currentPlayer;
+    cell.classList.add(currentPlayer);
+
+    // Verificar si hay un ganador
+    if (checkWinner()) {
+        setTimeout(() => {
+            alert(`Jugador ${currentPlayer} es el GANADOR!`);
+            resetBoard();
+        }, 100);
+        return;
+    }
+
+    // Verificar si hay un empate
+    if (checkDraw()) {
+        setTimeout(() => {
+            alert('ES UN EMPATE!');
+            resetBoard();
+        }, 100);
+        return;
+    }
+
+    // Función para alternar al siguiente jugador
+    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+}
+
+// Función para verificar si hay un ganador
+function checkWinner() {
+    return winningCombinations.some(combination => {
+        return combination.every(index => {
+            return cells[index].textContent === currentPlayer;
+        });
     });
-  });
-};
+}
 
-// Función que verifica si hay empate
-const isDraw = () => {
-  // Verifica si todas las celdas están ocupadas
-  return [...cells].every(cell => {
-    return cell.classList.contains('x') || cell.classList.contains('circle');
-  });
-};
+// Función para verificar si hay un empate
+function checkDraw() {
+    return [...cells].every(cell => {
+        return cell.textContent !== '';
+    });
+}
 
-// Función que inicia el juego
-const startGame = () => {
-  // Reinicia el turno al jugador 'X'
-  isCircleTurn = false;
-  // Limpia todas las celdas y añade el evento de clic
-  cells.forEach(cell => {
-    cell.classList.remove('x', 'circle');
-    cell.textContent = '';
-    cell.addEventListener('click', handleClick, { once: true });
-  });
-};
+// Función para reiniciar el tablero
+function resetBoard() {
+    cells.forEach(cell => {
+        cell.textContent = '';
+        cell.classList.remove('X', 'O');
+    });
+    currentPlayer = 'X';
+}
 
-// Inicia el juego al cargar la página
-startGame();
+// Añadir event listeners a las celdas
+cells.forEach(cell => {
+    cell.addEventListener('click', handleClick);
+});
