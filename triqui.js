@@ -1,63 +1,79 @@
-const selectCells = document.querySelectorAll('.cell');
+const cells = document.querySelectorAll('.cell');
+const resetButton = document.getElementById('reset');
+let playerSymbol = 'X';
+let computerSymbol = 'O';
+let board = ['', '', '', '', '', '', '', '', ''];
+let currentPlayer = 'player';
 
-const restartBtn = document.getElementById('restart');
-const winningPattern = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-];
-let count = 0;
-const disableCells = () => {
-    selectCells.forEach((element) => {
-        element.style.pointerEvents = 'none'; 
-    });
-};
-const enableCells = () => {
-    selectCells.forEach((element) => {
-        element.style.pointerEvents = 'auto';
-        element.innerText = '';
-    });
-    count = 0;
-};
-selectCells.forEach((cell, i) => {
-    cell.addEventListener('click', (e) => chooseUsers(e, i));
-});
-function chooseUsers(e) {
-    const cell = e.target;
-    if (cell.innerText !== "") return; 
+// Inicializar el juego
+initGame();
 
-    count++;
-    const letter = count % 2 ? 'X' : 'O'; 
-    cell.innerText = letter;
-    winChecker(); 
+// Función para inicializar el juego
+function initGame() {
+    cells.forEach((cell, index) => {
+        cell.addEventListener('click', () => makeMove(index));
+    });
+    resetButton.addEventListener('click', resetGame);
+    renderBoard();
 }
 
-function winChecker() {
-    for (let pattern of winningPattern) {
-        let [cell1, cell2, cell3] = [
-            selectCells[pattern[0]].innerText,
-            selectCells[pattern[1]].innerText,
-            selectCells[pattern[2]].innerText,
-        ];
+// Renderizar el tablero
+function renderBoard() {
+    cells.forEach((cell, index) => {
+        cell.textContent = board[index];
+        cell.style.pointerEvents = board[index] === '' ? 'auto' : 'none';
+    });
+}
 
-        if (cell1 !== "" && cell1 === cell2 && cell2 === cell3) {
-            console.log(`Gano ${cell1}`);
-            disableCells(); 
-            return; 
+// Manejar el movimiento del jugador
+function makeMove(index) {
+    if (board[index] === '' && currentPlayer === 'player') {
+        board[index] = playerSymbol;
+        currentPlayer = 'computer';
+        renderBoard();
+        if (checkWin(playerSymbol)) {
+            alert('¡Has ganado!');
+            resetGame();
+        } else if (board.includes('')) {
+            setTimeout(computerMove, 500);
+        } else {
+            alert('¡Es un empate!');
+            resetGame();
         }
     }
+}
 
-    if (count === 9) {
-        console.log('Empate');
-        disableCells();
+// Movimiento de la computadora
+function computerMove() {
+    let availableMoves = board.map((cell, index) => cell === '' ? index : null).filter(index => index !== null);
+    let randomIndex = availableMoves[Math.floor(Math.random() * availableMoves.length)];
+    board[randomIndex] = computerSymbol;
+    currentPlayer = 'player';
+    renderBoard();
+    if (checkWin(computerSymbol)) {
+        alert('¡La computadora ha ganado!');
+        resetGame();
+    } else if (!board.includes('')) {
+        alert('¡Es un empate!');
+        resetGame();
     }
 }
 
-restartBtn.addEventListener('click', () => {
-    enableCells(); 
-});
+// Verificar si hay un ganador
+function checkWin(symbol) {
+    const winningCombinations = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8], // Horizontales
+        [0, 3, 6], [1, 4, 7], [2, 5, 8], // Verticales
+        [0, 4, 8], [2, 4, 6]             // Diagonales
+    ];
+    return winningCombinations.some(combination => {
+        return combination.every(index => board[index] === symbol);
+    });
+}
+
+// Reiniciar el juego
+function resetGame() {
+    board = ['', '', '', '', '', '', '', '', ''];
+    currentPlayer = 'player';
+    renderBoard();
+}
