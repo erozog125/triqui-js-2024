@@ -13,7 +13,7 @@ const winningCombinations = [
     [2, 4, 6]
 ];
 
-// Función para que funcione el clic en una celda
+// Función para manejar el clic en una celda
 function handleClick(event) {
     const cell = event.target;
     
@@ -29,8 +29,13 @@ function handleClick(event) {
     // Verificar si hay un ganador
     if (checkWinner()) {
         setTimeout(() => {
-            alert(`Jugador ${currentPlayer} GANA!`);
-            resetBoard();
+            Swal.fire({
+                title: `Jugador ${currentPlayer} GANA!`,
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            }).then(() => {
+                resetBoard();
+            });
         }, 100);
         return;
     }
@@ -38,8 +43,13 @@ function handleClick(event) {
     // Verificar si hay un empate
     if (checkDraw()) {
         setTimeout(() => {
-            alert('ES UN EMPATE!');
-            resetBoard();
+            Swal.fire({
+                title: '¡ES UN EMPATE!',
+                icon: 'info',
+                confirmButtonText: 'Aceptar'
+            }).then(() => {
+                resetBoard();
+            });
         }, 100);
         return;
     }
@@ -70,7 +80,7 @@ function resetBoard() {
         cell.textContent = '';
         cell.classList.remove('X', 'O');
     });
-    currentPlayer = playerSymbol;
+    currentPlayer = playerSymbol; // Resetea al símbolo elegido por el jugador
 }
 
 // Función para manejar la elección del símbolo por el jugador
