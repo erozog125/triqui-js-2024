@@ -46,7 +46,7 @@ function selectSymbol(symbol) {
 
 
 
-//hacemos la funcion para el event de hacer click coloque la letra X 
+//hacemos la funcion para el event de hacer click 
 function onClickUser(event) {
     //asigna el elemento en el que ocurre el event de hacer click
     const cell = event.currentTarget;
@@ -97,14 +97,14 @@ function chooseCpu() {
     //Desestructuramos las variables row y col que obtendran los valores de las propiedades del objeto seleccionado en emptyCells
     let { row, col } = emptyCells[randomIndex];
 
-    //Aqui actualizaremos el tablero en memoria ya con el movimiento del jugador el valor era X
+    //Aqui actualizaremos el tablero en memoria ya con el movimiento del jugador
     board[row][col] = cpuSymbol;
-    //Ahora enviamos las posiciones en el id , donde la celda que coincida con los datos de la fila y columna envie la letra O
+    //Ahora enviamos las posiciones en el id , donde la celda que coincida con los datos de la fila y columna envie el simbolo asignado a la cpu
     document.getElementById(`cell-${row}-${col}`).textContent = cpuSymbol;
 }
 
 function emptyPosition(row, col, symbol, cellElement){
-    //Realizamos nuestra primera condicion para validar si el tablero en la fila y columna en la que esta ubicada donde se realizo el evento esta igual a vacia ' ' entonces cambiamos ese vacio a X , y luego le mandamos esa X a la celda en el html siempre y cuando sea true , si es false no ingresa nada
+    //Realizamos nuestra primera condicion para validar si el tablero en la fila y columna en la que esta ubicada donde se realizo el evento esta igual a vacia ' ' entonces cambiamos ese vacio a el simbolo asignado a al usuario , y luego le mandamos ese simbolo a la celda en el html siempre y cuando sea true , si es false no ingresa nada
     if (board[row][col] === '') {
         board[row][col] = symbol;
         cellElement.textContent = symbol;
