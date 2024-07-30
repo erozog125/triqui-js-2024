@@ -43,13 +43,13 @@
         width: 19rem;
         text-align: center;
     }
-    .reset-button {
+    .reset-button, .symbol-button {
         margin-top: 20px;
         padding: 10px 20px;
         font-size: 16px;
         cursor: pointer;
-        background-color: #3498db;
-        color: white;
+        background-color: white;
+        color: black;
         border: none;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -57,6 +57,11 @@
 </style>
 </head>
 <body>
+    <div class="symbol-selection">
+        <button class="symbol-button" onclick="selectSymbol('X')">Jugar con X</button>
+        <button class="symbol-button" onclick="selectSymbol('O')">Jugar con O</button>
+    </div>
+    <br>
   <div class="board">
       <div id="cell-0-0" class="cell"></div>
       <div id="cell-0-1" class="cell"></div>

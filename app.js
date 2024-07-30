@@ -1,3 +1,8 @@
+//Declaramos las variables para la eleccion del simbolo con el que jugara el cpu y el usuario
+
+let playerSymbol = '';
+let cpuSymbol = '';
+
 //Definimos el tablero de juego como una matriz 3x3
 const board = [
     ['', '', ''],
@@ -6,10 +11,41 @@ const board = [
 ];
 //Seleccionamos todas las celdas
 const cells = document.querySelectorAll('.cell');
+//Selecciona el contenedor del tablero de juego.
+const boardElement = document.querySelector('.board');
+//Selecciona el contenedor de los botones de selección de símbolo.
+const symbolSelection = document.querySelector('.symbol-selection');
+
+// Asegúrate de que el tablero esté oculto al cargar la página, hasta que el usuario tome su eleccion
+//para mostrarse
+document.addEventListener('DOMContentLoaded', () => {
+    //selecciona el elemento del DOM que representa el tablero de juego 
+    boardElement.style.display = 'none';
+    //selecciona el elemento del DOM que representa el tablero de juego 
+    symbolSelection.style.display = 'block';
+});
+
 //Creamos el evento click a todas las celdas
 cells.forEach(cell => {
     cell.addEventListener('click', onClickUser);
 });
+
+//Definimos una funcion para la eleccion del simbolo
+function selectSymbol(symbol) {
+    //Asigna el símbolo seleccionado por el jugador
+    playerSymbol = symbol;
+    // Asigna el símbolo contrario al seleccionado por el jugador 
+    cpuSymbol = symbol === 'X' ? 'O' : 'X';
+    //Oculta la sección de selección de símbolo cuando el usuario toma su eleccion
+    symbolSelection.style.display = 'none';
+    boardElement.style.display = 'grid';
+}
+
+
+
+
+
+
 //hacemos la funcion para el event de hacer click coloque la letra X 
 function onClickUser(event) {
     //asigna el elemento en el que ocurre el event de hacer click
@@ -20,16 +56,16 @@ function onClickUser(event) {
     //Utilizamos .map(numbe) para hacer la conversion de string a numero  de ese mismo arreglo que convertimos dando (fila , columna)
     const [row, col] = cell.id.split('-').slice(1).map(Number);
     //Funcion que valida que la celda este vacia para enviar el movimiento del usuario
-    if(emptyPosition(row,col,'X',cell)){
+    if(emptyPosition(row,col,playerSymbol,cell)){
         //Condicional que indica si el jugador a ganado envie el mensaje 
-        if (winner('X')) {
+        if (winner(playerSymbol)) {
         showResult('¡Felicidades! Has ganado.');
             return;
         }
         //en caso contrario permita la jugada de la maquina
         chooseCpu();
         //Valida si la maquina gana
-        if (winner('O')) {
+        if (winner(cpuSymbol)) {
             showResult('Lo siento, la máquina ha ganado.');
         }
     }
@@ -62,16 +98,16 @@ function chooseCpu() {
     let { row, col } = emptyCells[randomIndex];
 
     //Aqui actualizaremos el tablero en memoria ya con el movimiento del jugador el valor era X
-    board[row][col] = 'O';
+    board[row][col] = cpuSymbol;
     //Ahora enviamos las posiciones en el id , donde la celda que coincida con los datos de la fila y columna envie la letra O
-    document.getElementById(`cell-${row}-${col}`).textContent = 'O';
+    document.getElementById(`cell-${row}-${col}`).textContent = cpuSymbol;
 }
 
-function emptyPosition(row, col, user, cellElement){
+function emptyPosition(row, col, symbol, cellElement){
     //Realizamos nuestra primera condicion para validar si el tablero en la fila y columna en la que esta ubicada donde se realizo el evento esta igual a vacia ' ' entonces cambiamos ese vacio a X , y luego le mandamos esa X a la celda en el html siempre y cuando sea true , si es false no ingresa nada
     if (board[row][col] === '') {
-        board[row][col] = user;
-        cellElement.textContent = user;
+        board[row][col] = symbol;
+        cellElement.textContent = symbol;
         return true;
     }
     return false;
@@ -152,4 +188,8 @@ function resetGame() {
     cells.forEach(cell => {
         cell.textContent = '';
     });
+
+    // Restablecer la visibilidad de la selección de símbolo y ocultar el tablero
+    symbolSelection.style.display = 'block';
+    boardElement.style.display = 'none';
 }
