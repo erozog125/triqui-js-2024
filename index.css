@@ -11,8 +11,8 @@ body {
     display: flex;
 
 }
-.title{
-    font-size: 80px;
+title{
+    font-size: 50px;
     color: #fff;
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
@@ -26,7 +26,7 @@ body {
     grid-template-columns: repeat(3, 100px); /* 3 columnas de 100px cada una */
     grid-template-rows: repeat(3, 100px); /* 3 filas de 100px cada una */
     gap: 2px; /* Espacio entre las celdas */
-    background-color: white; /* Color de fondo del tablero */
+    background-color: rgb(240, 214, 148); /* Color de fondo del tablero */
     padding: 10px; /* Espacio interno del tablero */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra ligera */
 }
@@ -44,4 +44,73 @@ body {
 .cell:hover {
   background-color: #fc0000;
   box-shadow: 0 0 5px #12161d;
+}
+
+
+#status {
+    margin: 20px 0;
+    font-size: 1.2em;
+}
+#symbolChoice{
+    margin: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 2px;
+    background-color: #797a79;
+    font-size: 20px;
+}
+#chooseX{
+    font-size: 15px;
+}
+
+#chooseO{
+    font-size: 15px;
+}
+
+#restart {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #063111;
+    color: #fffefe;
+    
+    
+    
+}
+
+#scoreboard, #coinToss {
+    margin-top: 20px;
+    text-align: center;
+    
+}
+
+#coinResult {
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+.coin{
+    display: flex;
+    justify-content: center;
+}
+
+.coin1{
+    width: 90px;
+    height: 90px;
+    border-radius: 60%;
+    border: 2px solid #4c4a4a;
+    background-color: #fff;
+    box-shadow: 0 0 5px #12161d;
+    
+}
+
+#tossCoin{
+    width: 200px;
+    height: 50px;
+    border-radius: 50px;
+    border: 2px solid #4c4a4a;
+    background-color: #b61111;
+    color: #fff;
+    font-size: 1.2em;
+    box-shadow: 0 0 5px #12161d;
+    margin-top: 10%;
 }
