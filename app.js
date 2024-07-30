@@ -62,7 +62,7 @@ function checkDraw() {
     });
 }
 
-// Función para reiniciar el tablero
+// Función para reiniciar el tablero después de que se acabe la ronda
 function resetBoard() {
     cells.forEach(cell => {
         cell.textContent = '';
