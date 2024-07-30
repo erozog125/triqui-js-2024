@@ -7,6 +7,7 @@
 <style>
     body {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         height: 100vh;
@@ -22,6 +23,7 @@
         background-color: white; /* Color de fondo del tablero */
         padding: 10px; /* Espacio interno del tablero */
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+        margin-bottom: 1rem;
     }
 
     .cell {
@@ -42,15 +44,17 @@
 </head>
 <body>
   <div class="board">
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
+      <div class="cell" id="cell0"></div>
+      <div class="cell" id="cell1"></div>
+      <div class="cell" id="cell2"></div>
+      <div class="cell" id="cell3"></div>
+      <div class="cell" id="cell4"></div>
+      <div class="cell" id="cell5"></div>
+      <div class="cell" id="cell6"></div>
+      <div class="cell" id="cell7"></div>
+      <div class="cell" id="cell8"></div>
   </div>
+  <button id="restart">Reiniciar</button>
+  <script src="app.js"></script>
 </body>
 </html>
