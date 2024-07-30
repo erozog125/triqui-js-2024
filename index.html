@@ -1,23 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/style/style.css">
-<title>Tablero de Triqui</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style/style.css" />
+    <title>Tablero de Triqui</title>
+  </head>
+  <body>
 
-</head>
-<body>
-  <div class="board" id="board">
-      <div class="cell0"></div>
-      <div class="cell1"></div>
-      <div class="cell2"></div>
-      <div class="cell3"></div>
-      <div class="cell4"></div>
-      <div class="cell5"></div>
-      <div class="cell6"></div>
-      <div class="cell7"></div>
-      <div class="cell8"></div>
-  </div>
-</body>
+    <div id="symbol-selection" class="container-selector">
+      <h2>Elige tu simbolo</h2>
+
+      <div class="button-select">
+        <button id="choose-x">X</button>
+      <button id="choose-o">O</button>
+      </div>
+      
+    </div>
+
+    <div class="board" id="board">
+      <div class="cell" data-index="0"></div>
+      <div class="cell" data-index="1"></div>
+      <div class="cell" data-index="2"></div>
+      <div class="cell" data-index="3"></div>
+      <div class="cell" data-index="4"></div>
+      <div class="cell" data-index="5"></div>
+      <div class="cell" data-index="6"></div>
+      <div class="cell" data-index="7"></div>
+      <div class="cell" data-index="8"></div>
+    </div>
+
+    <button id="reset">Reiniciar</button>
+    <div id="result"></div>
+
+    <script src="/triqui.js"></script>
+  </body>
 </html>

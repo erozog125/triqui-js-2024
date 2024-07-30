@@ -2,9 +2,23 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100vh;
     margin: 0;
     background-color: #3498db; /* Color de fondo azul */
+    padding: 2rem;
+}
+
+.container-selector{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.container-selector button {
+    width: 2rem;
 }
 
 .board {
@@ -15,6 +29,7 @@ body {
     background-color: white; /* Color de fondo del tablero */
     padding: 10px; /* Espacio interno del tablero */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    margin: 1rem;
 }
 
 .cell {
