@@ -5,57 +5,98 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tablero de Triqui</title>
 <style>
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        background: rgb(25,109,148);
-        background: linear-gradient(90deg, rgba(25,109,148,1) 0%, rgba(13,140,232,1) 47%, rgba(0,212,255,1) 100%);
-    }
+   body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: rgb(25,109,148);
+            background: linear-gradient(90deg, rgba(25,109,148,1) 0%, rgba(13,140,232,1) 47%, rgba(0,212,255,1) 100%);
+        }
 
-    .board {
-        display: grid;
-        grid-template-columns: repeat(3, 100px); /* 3 columnas de 100px cada una */
-        grid-template-rows: repeat(3, 100px); /* 3 filas de 100px cada una */
-        gap: 2px; /* Espacio entre las celdas */
-        background-color: rgba(115,230,232,1); /* Color de fondo del tablero */
-        padding: 10px; /* Espacio interno del tablero */
-        box-shadow: 0 0 20px rgb(153, 0, 255); /* Sombra ligera */
-    }
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px); /* 3 columnas de 100px cada una */
+            grid-template-rows: repeat(3, 100px); /* 3 filas de 100px cada una */
+            gap: 2px;/* Espacio entre las celdas */
+            background-color: rgba(115,230,232,1); /* Color de fondo del tablero */
+            padding: 10px;/* Espacio interno del tablero */
+            box-shadow: 0 0 20px rgb(179, 65, 255); /* Sombra ligera */
+            border-radius: 10px;
+        }
 
-    .cell {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 2px solid #2477af; /* Borde azul */
-        font-size: 24px;
-        font-weight: bold;
-        cursor: pointer;
-    }
+        .cell {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #2477af; /* Borde azul */
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-    .cell:hover {
-      background-color: #d8fde0;
+        .cell:hover {
+            background-color: #d8fde0;
       box-shadow: 0 0 5px #0653f8;
-    }
-</style>
+        }
+
+        #message-container {
+            display: none; /* Ocultar por defecto */
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #winning{
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        #restartButton {
+            padding: 14px 25px;
+            font-size: 18px;
+            color: white;
+            background-color: rgba(115,230,232,1);
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 10px;
+            margin-top: 20px; /* Separar un poco del mensaje */
+        }
+
+        #restartButton:hover {
+            background-color: #a7f2ff;
+        }
+        .circle {
+        font-size: 50px;
+      }
+      .cross {
+        font-size: 18px;
+      }
+
+    </style>
+    
 </head>
 <body>
-    <div id="board2">
-  <div class="board">
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-  </div>
-  <div id="turnos"> El turno es X</div>
-<script src="app.js"></script>
-</div>
+    <div class="board">
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+    </div>
+    <div id="message-container">
+        <div id="winning"></div>
+    </div>
+    <!-- Botón de reinicio -->
+    <button id="restartButton">Reiniciar</button>
+    <script src="app.js"></script>
 </body>
 </html>
