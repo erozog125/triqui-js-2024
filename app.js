@@ -1,4 +1,6 @@
+// Creación de las variables
 let currentPlayer = 'X';
+let playerSymbol = 'X';
 const cells = document.querySelectorAll('.cell');
 const winningCombinations = [
     [0, 1, 2],
@@ -11,7 +13,7 @@ const winningCombinations = [
     [2, 4, 6]
 ];
 
-// Función para manejar el clic en una celda
+// Función para que funcione el clic en una celda
 function handleClick(event) {
     const cell = event.target;
     
@@ -27,7 +29,7 @@ function handleClick(event) {
     // Verificar si hay un ganador
     if (checkWinner()) {
         setTimeout(() => {
-            alert(`Jugador ${currentPlayer} es el GANADOR!`);
+            alert(`Jugador ${currentPlayer} GANA!`);
             resetBoard();
         }, 100);
         return;
@@ -42,7 +44,7 @@ function handleClick(event) {
         return;
     }
 
-    // Función para alternar al siguiente jugador
+    // Alternar al siguiente jugador
     currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
 }
 
@@ -62,13 +64,22 @@ function checkDraw() {
     });
 }
 
-// Función para reiniciar el tablero después de que se acabe la ronda
+// Función para reiniciar el tablero en cualquier momento
 function resetBoard() {
     cells.forEach(cell => {
         cell.textContent = '';
         cell.classList.remove('X', 'O');
     });
-    currentPlayer = 'X';
+    currentPlayer = playerSymbol;
+}
+
+// Función para manejar la elección del símbolo por el jugador
+function chooseSymbol(symbol) {
+    playerSymbol = symbol;
+    currentPlayer = symbol;
+    document.querySelector('.menu').style.display = 'none';
+    document.querySelector('.board').style.display = 'grid';
+    document.querySelector('.controls').style.display = 'block';
 }
 
 // Añadir event listeners a las celdas

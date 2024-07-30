@@ -7,6 +7,7 @@
 <style>
     body {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         height: 100vh;
@@ -22,6 +23,7 @@
         background-color: rgba(0, 217, 255, 0.678); /* Color de fondo del tablero */
         padding: 10px; /* Espacio interno del tablero */
         box-shadow: 0 0 20px rgb(0, 0, 0); /* Sombra ligera */
+        margin-top: 20px;
     }
 
     .cell {
@@ -39,27 +41,46 @@
         box-shadow: 0 0 5px #0653f8;
     }
 
-    .X{
-        color:black;
+    .X {
+        color: black;
     }
 
-    .O{
-        color:blueviolet;
+    .O {
+        color: blueviolet;
+    }
+
+    .menu, .controls {
+        text-align: center;
+    }
+
+    .menu button, .controls button {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin: 5px;
+        background-color: aqua;
     }
 </style>
 </head>
 <body>
-  <div class="board">
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-  </div>
+    <div class="menu">
+        <h1>Escoge tu figura</h1>
+        <button onclick="chooseSymbol('X')">X</button>
+        <button onclick="chooseSymbol('O')">O</button>
+    </div>
+    <div class="board" style="display:none;">
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+    </div>
+    <div class="controls" style="display:none;">
+        <button onclick="resetBoard()">Reiniciar Tablero</button>
+    </div>
 <script src="app.js"></script>
 </body>
 </html>
