@@ -5,6 +5,7 @@ const checkHorizonal = (y, cpuOrPlayer) => grid[y][0] == cpuOrPlayer && grid[y][
 const checkVertical = (x, cpuOrPlayer) => grid[0][x] == cpuOrPlayer && grid[1][x] == cpuOrPlayer && grid[2][x] == cpuOrPlayer
 const checkPerpendicular1 = (cpuOrPlayer) => grid[0][0] == cpuOrPlayer && grid[1][1] == cpuOrPlayer && grid[2][2] == cpuOrPlayer
 const checkPerpendicular2 = (cpuOrPlayer) => grid[0][2] == cpuOrPlayer && grid[1][1] == cpuOrPlayer && grid[2][0] == cpuOrPlayer
+const showReload = () => {document.getElementsByClassName("reiniciar")[0].style.display = "block"}
 
 let grid = [
 	[0, 0, 0],
@@ -50,21 +51,21 @@ function verifyVictory() {
 			title: "La humanidad ha ganado!",
 			text: "Waos",
 			confirmButtonText:"Volver a empezar"
-		}).then(reload);
+		}).then(showReload);
 	} else if (win == 2) {
 		Swal.fire({
 			icon: "error",
 			title: "La \"\"IA\"\" ha ganado...",
 			text: "Ni modo",
 			confirmButtonText:"Volver a empezar"
-		}).then(reload);
+		}).then(showReload);
 	} else if (getEmpty() == 0) {
 		Swal.fire({
 			imageUrl: "https://media1.tenor.com/m/tmE2xQBnGmMAAAAC/really-spongebob.gif",
 			title: "Ninguno de los dos ha ganado",
 			text: "Wtf",
 			confirmButtonText:"Volver a empezar"
-		}).then(reload);
+		}).then(showReload);
 	}
 }
 
@@ -89,6 +90,8 @@ function reload() {
 	gridVisual.forEach((e) => {
 		e.textContent = ""
 	})
+
+	document.querySelector(".reiniciar").style.display = "none"
 }
 
 function verifyValid(cords) {
