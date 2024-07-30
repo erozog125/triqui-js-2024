@@ -1,7 +1,11 @@
 const cells = document.querySelectorAll('.cell');
 const board = document.getElementById('board');
+const scoreDisplay1= document.getElementById("score1");
+const scoreDisplay2= document.getElementById("score2");
 let turn = 'X'; // Empieza el jugador X
 let boardState = ['', '', '', '', '', '', '', '', ''];
+let score1=0;
+let score2=0;
 
 function checkWinner() {
     const winPatterns = [
@@ -34,11 +38,31 @@ function handleClick(event) {
 
     const winner = checkWinner();
     if (winner) {
-        setTimeout(() => alert(winner === 'T' ? '¡Empate!' : `¡Ganó ${winner}`), 10);
-        return; // Detener el juego si hay un ganador
+        if(winner ==="X"){
+            score1++;
+            alert("Jugador 1 gana!")
+        }else if(winner ==="O"){
+            score2++;
+            alert("Jugador 2 gana!")
+        }else{
+            alert("Empate!")
+        }
+        updateScores();
+        return;
     }
 
     turn = turn === 'X' ? 'O' : 'X'; // Cambiar turno
 }
+function resetGame(){
 
+    cells.forEach(cell => cell.textContent ="");
+    currentPlayer ="X";
+}
 cells.forEach(cell => cell.addEventListener('click', handleClick));
+resetButton.addEventListener("click", resetGame);
+
+
+function updateScores(){
+  scoreDisplay1.textContent =score1;
+  scoreDisplay2.textContent =score2;
+}
