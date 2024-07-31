@@ -9,8 +9,10 @@
 <body>
     <div class="choose" id="chooseDiv">
         <h2>Elige tu... personaje?, creo:</h2>
-        <img class="size" id="equis" src="images/equis.png" alt="">
-        <img class="size" id="circle" src="images/circle.png" alt="">
+        <div id="characters">
+        <img class="size selection" id="equis" src="images/equis.png" alt="">
+        <img class="size selection" id="circle" src="images/circle.png" alt="">
+        </div>
     </div>
   <div class="board" id="boardDiv">
       <div id="one" class="cell"></div>
@@ -23,6 +25,7 @@
       <div id="eight" class="cell"></div>
       <div id="nine" class="cell"></div>
   </div>
+  <button id="resetButton" style="display: none;">Reiniciar Juego</button>
 </body>
 <script src="game.js"></script>
 </html>
