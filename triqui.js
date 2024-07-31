@@ -1,6 +1,6 @@
 // Inicializar variables
 let currentPlayer = null;
-let board = Array(9).fill(null); 
+let board = Array(9).fill(null);
 let isGameActive = true;
 
 // Elementos del DOM
@@ -18,7 +18,7 @@ function chooseSymbol(symbol) {
   result.textContent = "";
   chooseOButton.disabled = true;
   chooseXButton.disabled = true;
-  
+
   if (currentPlayer === "x") {
     setTimeout(makeAIMove, 1000);
   }
@@ -39,7 +39,7 @@ function handleClick(event) {
   if (checkWinner()) {
     result.textContent = `El jugador ${currentPlayer} ganó`;
     isGameActive = false;
-  } else if (board.every(cell => cell !== null)) {
+  } else if (board.every((cell) => cell !== null)) {
     result.textContent = "Empate";
     isGameActive = false;
   } else {
@@ -78,7 +78,8 @@ function makeAIMove() {
 
   if (availableMoves.length === 0) return; // No hay movimientos disponibles
 
-  const randomIndex = availableMoves[Math.floor(Math.random() * availableMoves.length)];
+  const randomIndex =
+    availableMoves[Math.floor(Math.random() * availableMoves.length)];
   board[randomIndex] = "o";
   cells[randomIndex].textContent = "o";
 
@@ -111,3 +112,6 @@ cells.forEach((cell) => cell.addEventListener("click", handleClick));
 reset.addEventListener("click", resetGame);
 chooseXButton.addEventListener("click", () => chooseSymbol("x"));
 chooseOButton.addEventListener("click", () => chooseSymbol("o"));
+
+
+/* Intru que pena, lo hice como pude y cositas que encontre en internet porque no sabia que habia mandado al discord una guia para hacerlo...RF: Usar el simbolo X jej :( */
