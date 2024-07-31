@@ -1,0 +1,90 @@
+body {
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #3498db; 
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px); 
+  grid-template-rows: repeat(3, 100px); 
+  gap: 2px; 
+  background-color: white; 
+  padding: 10px; 
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #3498db; 
+  font-size: 3rem;
+  color: #fff;
+  background-color: #0653f8;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cell:hover {
+  background-color: #3498db;
+  box-shadow: 0 0 5px #0653f8;
+}
+
+.modal {
+  width: 30rem;
+  height: 25rem;
+  border-radius: 10px;
+  background-color: #ffffffdb;
+  border: double 4px #262525;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: -4px -4px 0 rgba(14, 214, 241, 0.387);
+}
+
+.modal > h2 {
+  font-size: 2.5rem;
+  color: #0653f8;
+  text-align: center;
+}
+
+.options > button {
+  width: 4rem;
+  height: 4rem;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.options > button:hover {
+  background-color: #07cb07e3;
+  color: #fff;
+  cursor: pointer;
+}
+
+#reset-button {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  margin-top: 20px; 
+}
+
+#reset-button:hover {
+  background-color: #0056b3;
+}
+
+#reset-button:active {
+  transform: scale(0.98);
+}
