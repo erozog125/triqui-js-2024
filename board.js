@@ -3,6 +3,7 @@ const modal = document.getElementById("modal");
 const optX = document.getElementById("btn-x");
 const optO = document.getElementById("btn-o");
 const resultMessage = document.getElementById("result-message"); // AÃ±ade un elemento para mostrar el resultado
+const button = document.getElementById("volver");
 let user = "";
 let machine = "";
 let boardGame = ["", "", "", "", "", "", "", "", ""];
@@ -21,6 +22,8 @@ optO.addEventListener("click", () => {
     closeModal();
     playUser();
 });
+
+button.addEventListener("click", volver)
 
 function closeModal() {
     modal.style.display = "none";
@@ -103,4 +106,17 @@ function showResult(message) {
 
 function getRandomNumber() {
     return Math.floor(Math.random() * 9);
+}
+
+function volver(){
+  boardGame = ["", "", "", "", "", "", "", "", ""];
+  isGameOver = false;
+  user = ""
+  machine = ""
+   board.forEach(cell =>{
+    cell.textContent = ""
+    cell.addEventListener ("click",handleUserClick)
+   })
+   modal.style.display = "flex"
+   resultMessage.textContent = ""
 }
