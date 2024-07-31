@@ -2,35 +2,61 @@ const cells = document.querySelectorAll('.cell');
 let currentPlayer = 'X';
 let gameActive = true;
 
-cells.forEach(cell => {
-    cell.addEventListener('click', handleClick);
-  });
+cells.forEach((cell, index) => {
+    cell.addEventListener('click', () => handleClick(index));
+});
 
 function handleClick(index) {
-    if (cells[index].innerHTML === '') {
-        cells[index].innerHTML = currentPlayer;
-        checkWinner();
-        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-        if (gameActive && currentPlayer === 'O') {
-            simulateMachineMove();
-          }
+    if (!gameActive || cells[index].innerHTML !== '') return;
+
+    cells[index].innerHTML = currentPlayer;
+    if (checkWinner()) {
+        gameActive = false;
+        const winner = currentPlayer === 'X' ? 'Jugador' : 'Máquina';
+        setTimeout(() => alert(`${winner} gana!`), 10);
+        return;
+    } 
+
+    if ([...cells].every(cell => cell.innerHTML !== '')) {
+        gameActive = false;
+        setTimeout(() => alert('¡Empate!'), 10);
+        return;
+    }
+
+    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+    if (gameActive && currentPlayer === 'O') {
+        setTimeout(simulateMachineMove, 500); 
     }
 }
 
 function simulateMachineMove() {
     let emptyCells = [];
     cells.forEach((cell, index) => {
-      if (cell.innerText === '') {
-        emptyCells.push(index);
-      }
+        if (cell.innerHTML === '') {
+            emptyCells.push(index);
+        }
     });
+
+    if (emptyCells.length === 0) return; 
 
     const randomIndex = Math.floor(Math.random() * emptyCells.length);
     const machineMove = emptyCells[randomIndex];
-    cells[machineMove].innerText = currentPlayer;
-    checkResult();
-    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-  }
+    cells[machineMove].innerHTML = currentPlayer;
+
+    if (checkWinner()) {
+        gameActive = false;
+        const winner = currentPlayer === 'X' ? 'Jugador' : 'Máquina';
+        setTimeout(() => alert(`${winner} gana!`), 10);
+        return;
+    }
+
+    if ([...cells].every(cell => cell.innerHTML !== '')) {
+        gameActive = false;
+        setTimeout(() => alert('¡Empate!'), 10);
+    }
+
+    currentPlayer = 'X'; 
+}
 
 function checkWinner() {
     const winConditions = [
@@ -44,25 +70,16 @@ function checkWinner() {
         [2, 4, 6]
     ];
 
-    for (let condition of winConditions) {
+    return winConditions.some(condition => {
         let [a, b, c] = condition;
-        if (cells[a].innerHTML !== '' &&
-            cells[a].innerHTML === cells[b].innerHTML &&
-            cells[a].innerHTML === cells[c].innerHTML) {
-            resetGame();
-            return;
-        }
-    }
-
-    if ([...cells].every(cell => cell.innerHTML !== '')) {
-        alert('¡Empate!');
-        resetGame();
-    }
+        return cells[a].innerHTML !== '' &&
+               cells[a].innerHTML === cells[b].innerHTML &&
+               cells[a].innerHTML === cells[c].innerHTML;
+    });
 }
 
 function resetGame() {
-    cells.forEach(cell => {
-        cell.innerHTML = '';
-    });
+    cells.forEach(cell => cell.innerHTML = '');
     currentPlayer = 'X';
+    gameActive = true;
 }

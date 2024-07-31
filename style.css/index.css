@@ -4,30 +4,56 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #3498db; /* Color de fondo azul */
+    background-color: #34db4a; 
+    font-family: 'Arial', sans-serif;
 }
 
 .board {
     display: grid;
-    grid-template-columns: repeat(3, 100px); /* 3 columnas de 100px cada una */
-    grid-template-rows: repeat(3, 100px); /* 3 filas de 100px cada una */
-    gap: 2px; /* Espacio entre las celdas */
-    background-color: white; /* Color de fondo del tablero */
-    padding: 10px; /* Espacio interno del tablero */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    grid-template-columns: repeat(3, 100px); 
+    grid-template-rows: repeat(3, 100px); 
+    gap: 5px; 
+    background-color: white; 
+    padding: 10px; 
+    border-radius: 10px; 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
 }
 
 .cell {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid #3498db; /* Borde azul */
-    font-size: 24px;
+    border: 2px solid #6034db; 
+    background-color: #fff; 
+    border-radius: 8px;
+    font-size: 2rem;
     font-weight: bold;
+    color: #6034db; 
     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
 }
 
 .cell:hover {
-  background-color: #3498db;
-  box-shadow: 0 0 5px #0653f8;
+    background-color: #34db4a;
+    color: #fff; 
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); 
+    transform: scale(1.1); 
+}
+
+
+.reset-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #34db4a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.reset-button:hover {
+    background-color: #1e5b9b; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
 }

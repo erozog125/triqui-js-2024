@@ -1,0 +1,5 @@
+* Siempre iniciará el jugador.
+* La máquina deberá poder elegir de manera aleatoria, siempre que la casilla esté disponible.
+* La validación debe hacerse cada que haya un movimiento en el tablero.
+* Al momento de que haya un ganador debe salir un mensaje de alerta indicando quién ganó.
+* Debe existir un botón de reiniciar juego.
