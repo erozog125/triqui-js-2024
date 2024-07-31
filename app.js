@@ -35,7 +35,7 @@ function playUser() {
 function playMachine() {
     let optMachine
     do {
-        optMachine = getRandomNumber()
+        optMachine = getRandomNumber() //Asigna un valor random a la variable optMachine
     } while (boardGame[optMachine] !== "" || isGameOver); //Repite el bucle hasta encontrar una casilla libre
 
     board[optMachine].textContent = machine; // Coloca la maquina en la casilla elegida
