@@ -43,3 +43,33 @@ function playMachine() {
     validateGame(); // Valida el estado del juego despues de que juegue la maquina
 }
 
+function handleUserClick(i) {
+    if (!isGameOver && board[i].textContent === "") {
+        board[i].textContent = user;
+        boardGame[i] = user;
+        validateGame();
+
+        if (!isGameOver) {
+            setTimeout(playMachine(), 1000)
+        }
+    }
+}
+
+function validateGame() {
+    const winner = checkWinner();
+    if (winner) {
+        showResult(`${winner} gana!`) // Muestra el resultado al ganador
+        isGameOver = true;
+        board.forEach(cell => {
+            cell.removeEventListener("click", handleUserClick);
+        });
+    } else if (!boardGame.includes("")) {
+        showResult("Empate!") // Muestra el resultado en caso de empate
+        isGameOver = true;
+        board.forEach(cell => {
+            cell.removeEventListener("click", handleUserClick);
+        });
+    } else {
+        console.log("Pendiente")
+    }
+}
