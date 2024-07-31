@@ -1,5 +1,6 @@
 let isPlayerOne = true;
 let cells = document.getElementsByClassName("cell");
+let  gameActive = true;
 
 for ( let i=0;  i< cells.length; i++) {
     cells[i].addEventListener('click', userMove);
@@ -9,6 +10,7 @@ function userMove(e) {
     if (!cellValue.length){
      e.target.innerHTML = isPlayerOne? 'x' : 'o';
      isPlayerOne = !isPlayerOne;
+     checkWinner();
     }
 }
 
@@ -33,24 +35,25 @@ function checkWinner() {
         if (cells[a].innerHTML !== '' &&
             cells[a].innerHTML === cells[b].innerHTML &&
             cells[a].innerHTML === cells[c].innerHTML) {
-            resetGame();
+            alert('¡Ganador!');
+            gameActive = false;
             return;
         }
-        }
-    
-        if ([...cells].every(cell => cell.innerHTML!=="")) {
-         alert("!Empate!");
-         resetGame();
-
     }
+    
+    if ([...cells].every(cell => cell.innerHTML!=="")) {
+        alert("!Empate!");
+        gameActive= false;
+
+        }
     }
 
     function resetGame() {
-        cells.forEach(cell => {
-            cell.innerHTML = '';
-        });
-        currentPlayer = 'X';
+        for (let i = 0; i < cells.length; i++) {
+            cell[i].innerHTML = '';
+        };
+        isPlayerOne = true;
+        gameActive  = true;
     }
         
         
-    

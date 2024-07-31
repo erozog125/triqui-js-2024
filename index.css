@@ -5,6 +5,7 @@ body {
     height: 100vh;
     margin: 0;
     background-color: #3498db; /* Color de fondo azul */
+    text-align: center;
 }
 
 .board {
