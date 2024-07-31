@@ -96,3 +96,12 @@ function checkWinner() {
     }
     return null;
 }
+
+function showResult(message) {
+    Swal.fire(message)
+}
+
+function getRandomNumber() {
+    return Math.floor(Math.random() * 9);
+}
+
