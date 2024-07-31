@@ -35,7 +35,7 @@ function playUser() {
 function playMachine() {
     let optMachine
     do {
-        optMachine = getRandomNumber()
+        optMachine = getRandomNumber() //Asigna un valor random a la variable optMachine
     } while (boardGame[optMachine] !== "" || isGameOver); //Repite el bucle hasta encontrar una casilla libre
 
     board[optMachine].textContent = machine; // Coloca la maquina en la casilla elegida
@@ -72,4 +72,36 @@ function validateGame() {
     } else {
         console.log("Pendiente")
     }
+}
+
+function checkWinner() {
+    const winningCombinations = [
+        [0,1,2],
+        [3,4,5],
+        [6,7,8],
+        [0,3,6],
+        [1,4,7],
+        [2,5,8],
+        [0,4,8],
+        [2,4,6]
+    ]
+
+    for (const combination of winningCombinations) {
+        const [a, b, c] = combination;
+        if (boardGame[a] === boardGame[b] &&
+            boardGame[b] === boardGame[c] &&
+            boardGame[a] !== "") {
+            return boardGame[a];
+        }
+    }
+    return null;
+}
+
+function showResult(message) {
+    Swal.fire(message)
+}
+
+function getRandomNumber() {
+    return Math.floor(Math.random() * 9);
+
 }
