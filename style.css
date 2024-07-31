@@ -1,0 +1,87 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #3498db; 
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px); 
+  gap: 2px; /* Espacio entre las celdas */
+  background-color: white; /* Color de fondo del tablero */
+  padding: 10px; /* Espacio interno del tablero */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #3498db;
+  font-size: 3rem;
+  color: #fff;
+  background-color: #0653f8;
+  font-weight: 800;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cell:hover {
+  background-color: #3498db;
+  box-shadow: 0 0 5px #0653f8;
+}
+
+.modal {
+  width: 30rem;
+  height: 30rem;
+  border-radius: 10px;
+  background-color: #ffffffdb;
+  border: double 4px #262525;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: -4px -4px 0 rgba(14, 214, 241, 0.387);
+}
+
+.modal > h2 {
+  font-size: 2.5rem;
+  color: #0653f8;
+  text-align: center;
+}
+
+.options > button {
+  width: 4rem;
+  height: 4rem;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.options > button:hover {
+  background-color: #07cb07e3;
+  color: #fff;
+  cursor: pointer
+}
+
+.reset-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.reset-button:hover {
+  background-color: #c0392b;
+}
