@@ -5,7 +5,7 @@ body {
     height: 100vh;
     margin: 0;
     background-color: #f38816;
-    flex-direction: column; /* Color de fondo azul */
+    flex-direction: column; 
 }
 .triqui{
     display: flex;
@@ -23,19 +23,19 @@ title{
 
 .board {
     display: grid;
-    grid-template-columns: repeat(3, 100px); /* 3 columnas de 100px cada una */
-    grid-template-rows: repeat(3, 100px); /* 3 filas de 100px cada una */
-    gap: 2px; /* Espacio entre las celdas */
-    background-color: rgb(240, 214, 148); /* Color de fondo del tablero */
-    padding: 10px; /* Espacio interno del tablero */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px); 
+    gap: 2px; 
+    background-color: rgb(240, 214, 148);
+    padding: 10px; 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
 }
 
 .cell {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid #020000; /* Borde azul */
+    border: 2px solid #020000;
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
