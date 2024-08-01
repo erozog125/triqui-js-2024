@@ -8,6 +8,9 @@ let machine = ''
 let boardGame = ['', '', '', '', '', '', '', '', '']
 let isGameOver = false
 
+let userPoints = 0
+let machinePoints = 0
+
 function closeModal(){ //metodo cierra la ventana al seleccionar X o O
     modal.style.display = 'none'
 }
@@ -59,6 +62,7 @@ function handleUserClick(idx){
 function validateGame(){
     const winner = checkWinner()
     if(winner) {
+        points()
         showResult(`${winner} gana!`)
         isGameOver = true
         board.forEach((cell)=>{
@@ -91,10 +95,24 @@ function checkWinner(){
         if (boardGame[a] === boardGame[b] &&
             boardGame[b] === boardGame[c] &&
             boardGame[a] != ''){
+                
             return boardGame[a]
         }
     }
     return null
+}
+
+function points(){
+    const point = checkWinner()
+    if (user == point) {
+        userPoints++
+        console.log("usuario: "+userPoints)
+        userPoint.textContent = "Puntos usuario: "+userPoints
+    } else {
+        machinePoints++
+        console.log("maquina: "+machinePoints)
+        machinePoint.textContent = "Puntos maquina: "+machinePoints
+    }
 }
 
 function showResult(message){

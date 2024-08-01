@@ -74,3 +74,9 @@ body {
     flex-direction: column;
     gap: 1 rem;
   }
+
+  .puntaje {
+    display: flex;
+    justify-content: space-around;
+    gap: 1 rem;
+}
