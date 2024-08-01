@@ -2,6 +2,7 @@ const board = document.querySelectorAll('.cell');
 const modal = document.getElementById('modal');
 const optX = document.getElementById('btn-x');
 const optO = document.getElementById('btn-o');
+const resetButton = document.getElementById('reset-button');
 let user = '';
 let machine = '';
 let boardGame = ['', '', '', '', '', '', '', '', ''];
@@ -20,6 +21,8 @@ optO.addEventListener('click', () => {
     closeModal();
     playUser();
 });
+
+resetButton.addEventListener('click', resetGame);
 
 function closeModal() {
     modal.style.display = 'none';
@@ -63,14 +66,12 @@ function validateGame() {
         board.forEach((cell) => {
             cell.removeEventListener('click', handleUserClick);
         });
-        setTimeout(resetGame, 1000);
     } else if (!boardGame.includes('')) {
         showResult('Empate!');
         isGameOver = true;
         board.forEach((cell) => {
             cell.removeEventListener('click', handleUserClick);
         });
-        setTimeout(resetGame, 1000);
     } else {
         console.log('pendiente');
     }
@@ -110,6 +111,7 @@ function resetGame() {
     isGameOver = false;
     board.forEach((cell) => {
         cell.textContent = '';
+        cell.addEventListener('click', handleUserClick.bind(null, Array.prototype.indexOf.call(board, cell)));
     });
     modal.style.display = 'flex';
 }

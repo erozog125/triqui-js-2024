@@ -1,5 +1,6 @@
     body {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         height: 100vh;
@@ -9,19 +10,19 @@
     
     .board {
         display: grid;
-        grid-template-columns: repeat(3, 100px); 
-        grid-template-rows: repeat(3, 100px); 
-        gap: 2px; 
-        background-color: white; 
-        padding: 10px; 
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
+        grid-template-columns: repeat(3, 100px); /* 3 columnas de 100px cada una */
+        grid-template-rows: repeat(3, 100px); /* 3 filas de 100px cada una */
+        gap: 2px; /* Espacio entre las celdas */
+        background-color: white; /* Color de fondo del tablero */
+        padding: 10px; /* Espacio interno del tablero */
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra ligera */
     }
     
     .cell {
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 2px solid #3498db; 
+        border: 2px solid #3498db; /* Borde azul */
         font-size: 3rem;
         color: #fff;
         background-color: #0653f8;
@@ -66,5 +67,22 @@
         background-color: #07cb07e3;
         color: #fff;
         cursor: pointer
+    }
+    
+    .reset-button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: white;
+        background-color: #e74c3c; /* Color rojo */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 5px #c0392b;
+    }
+    
+    .reset-button:hover {
+        background-color: #c0392b;
     }
     
