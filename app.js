@@ -1,3 +1,6 @@
+
+
+
 const board = document.querySelectorAll(".cell");
 const modal = document.getElementById("modal");
 const optX = document.getElementById("btn-x");
@@ -53,7 +56,7 @@ function handleUserClick(i) {
         validateGame();
 
         if (!isGameOver) {
-            setTimeout(playMachine(), 1000)
+            setTimeout(playMachine, 900)
         }
     }
 }
