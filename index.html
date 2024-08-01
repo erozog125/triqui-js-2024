@@ -10,6 +10,7 @@
     <style>
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -50,14 +51,14 @@
 
         .cell:hover {
             background-color: #afcae6;
-            box-shadow: 0 0 5px #3a6fd3;
+            box-shadow: 0 0 5px #e4e7ee;
         }
 
         .modal {
             width: 30rem;
             height: 25rem;
             border-radius: 10px;
-            background-color: #c9e4ecdb;
+            background-color: #CDE8E5;
             border: double 4px #eee5e5;
             position: absolute;
             z-index: 1;
@@ -65,41 +66,73 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            box-shadow: -4px -4px 0 rgba(18, 133, 148, 0.387);
+            box-shadow: -4px -4px 0 #F5EDED;
         }
 
-
-        .modal>h2 {
+        .modal > h2 {
             font-size: 2.5rem;
-            color: #1b3468;
+            color: #233f7c;
             text-align: center;
         }
 
-        .options>button {
+        .options > button {
             width: 4rem;
             height: 4rem;
             font-size: 2rem;
             font-weight: 800;
         }
 
-        .options>button:hover {
-            background-color: #0793cbe3;
+        .options > button:hover {
+            background-color: #b8d5e0e3;
             color: #fff;
-            cursor: pointer
+            cursor: pointer;
         }
 
-        .button1 {
+        .button-container {
+            margin-top: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 20px;
+        }
+
+        .button1 > button {
             padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .button1 > button:hover {
+            background-color: #1b6faa;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #1b3468;
+            padding: 5px 10px;
+            background-color: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .close:hover {
+            background-color: #f8d7da;
         }
     </style>
 </head>
 
 <body>
     <div id="modal" class="modal">
+        <span class="close" id="close">&times;</span>
         <h2>Elije la opción con la que deseas jugar</h2>
         <div class="options">
             <button id="btn-x">X</button>
@@ -118,8 +151,10 @@
         <div class="cell"></div>
     </div>
 
-    <div class="button1" id="volver">
-        <button>Reiniciar</button>
+    <div class="button-container">
+        <div class="button1" id="volver">
+            <button>Reiniciar</button>
+        </div>
     </div>
 
     <script src="board.js"></script>

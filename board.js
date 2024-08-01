@@ -2,6 +2,7 @@ const board = document.querySelectorAll(".cell");
 const modal = document.getElementById("modal");
 const optX = document.getElementById("btn-x");
 const optO = document.getElementById("btn-o");
+const closeBtn = document.getElementById("close");
 const resultMessage = document.getElementById("result-message"); // AÃ±ade un elemento para mostrar el resultado
 const button = document.getElementById("volver");
 let user = "";
@@ -19,6 +20,13 @@ optX.addEventListener("click", () => {
 optO.addEventListener("click", () => {
     user = "O";
     machine = "X";
+    closeModal();
+    playUser();
+});
+
+closeBtn.addEventListener("click", () => {
+    user = "X";
+    machine = "O";
     closeModal();
     playUser();
 });
@@ -53,7 +61,7 @@ function handleUserClick(i) {
         validateGame();
 
         if (!isGameOver) {
-            setTimeout(playMachine(), 40000)
+            setTimeout(playMachine, 1000)
         }
     }
 }
