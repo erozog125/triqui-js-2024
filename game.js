@@ -3,7 +3,8 @@ const board = document.querySelectorAll('.cell')
 const modal = document.getElementById('modal')
 const optX = document.getElementById('btn-x')
 const optO = document.getElementById('btn-o')
-const resultMessage = document.getElementById('result-message') // Añade un elemento para mostrar el resultado
+const resultMessage = document.getElementById('result-message')
+const reset = document.getElementById('reset') 
 
 // estas ya son la varibles si pueden cambiar
 let user = ''
@@ -16,7 +17,7 @@ function closeModal(){
     modal.style.display = 'none'
 }
 
-// evento de selección
+// un evento que puede selecciones
 optX.addEventListener('click', ()=> { 
     user='X'
     machine='O'
@@ -24,7 +25,8 @@ optX.addEventListener('click', ()=> {
     playerUser()
 })
 
-optO.addEventListener('click', ()=> { // boton de seleccion de O del jugador
+// un evento que puede selecciones
+optO.addEventListener('click', ()=> { 
     user='O'
     machine='X'
     closeModal()
@@ -108,8 +110,33 @@ function validateGame(){
     }
 }
 
+function showResult(message){
+    Swal.fire(message)
+}
+
+function resetGame() {
+    // Restablecer el estado del juego
+    boardGame = ['', '', '', '', '', '', '', '', ''];
+    isGameOver = false;
+    user = '';
+    machine = '';
+    
+    // Limpiar el tablero visualmente
+    board.forEach(cell => {
+    cell.textContent = '';
+    });
+
+    // Mostrar el modal para seleccionar X o O
+    modal.style.display = 'flex';
+}
+
+reset.addEventListener('click', resetGame);
 
 
+/*
+reset.addEventListener('click', ()=> { 
+    board.forEach(cell => cell.classList.remove('x', 'o'));
+})
 
 /* apuntes Triqui:
 const board = document.querySelectorAll('.cell')

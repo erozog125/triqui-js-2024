@@ -68,3 +68,9 @@ body {
     color: #fff;
     cursor: pointer
   }
+
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+}
