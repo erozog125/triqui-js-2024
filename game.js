@@ -40,7 +40,76 @@ function playerUser(){ //metodo para que acepte el clik y coloque en la celda el
 function playMachine(){
     let opMachine
     do{
-        
+        opMachine = getRandomNumber()
+    } while (boardGame[opMachine] !== '' || isGameOver)
+
+        board[opMachine].textContent = machine
+        boardGame[opMachine] = machine
+        validateGame()
+}
+
+function getRandomNumber(){
+    return Math.floor(Math.random() * 9)
+}
+
+
+// define que la cpu debe esperar 1 sg antes de jugar
+function handleUserClick(idx){
+    if(!isGameOver && board[idx].textContent === ''){
+        board[idx].textContent = user
+        boardGame[idx] = user
+        validateGame()
+        if(!isGameOver){
+            setTimeout(()=>{ 
+                playMachine()
+            }, 1000)
+        }
+    }
+}
+
+function checkWinner(){
+    const winningCombinations = [
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],
+    [0,3,6],
+    [1,4,7],
+    [2,5,8],
+    [0,4,8],
+    [2,4,6]
+    ]
+    for(const combination of winningCombinations){
+        const [a,b,c] = combination
+        if (boardGame[a] === boardGame[b] &&
+            boardGame[b] === boardGame[c] &&
+            boardGame[a] != ''){
+            return boardGame[a]
+        }
+    }
+    return null
+}
+
+function validateGame(){
+    const winner = checkWinner()
+    if(winner) {
+        showResult(`${winner} gana!`)
+        isGameOver = true
+        board.forEach((cell)=>{
+            cell.removeEventListener('click', handleUserClick)
+        })
+    }else if(!boardGame.includes('')){
+        showResult('Empate!')
+        isGameOver = true
+        board.forEach((cell)=>{
+            cell.removeEventListener('click', handleUserClick)
+        })
+    }else{
+        console.log('pendiente')
+    }
+}
+
+
+
 
 /* apuntes Triqui:
 const board = document.querySelectorAll('.cell')
