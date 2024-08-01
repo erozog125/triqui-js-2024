@@ -104,3 +104,17 @@ function showResult(message){
 function getRandomNumber(){
     return Math.floor(Math.random() * 9)
 }
+
+function resetGame() {
+    boardGame = ['', '', '', '', '', '', '', '', ''];
+    isGameOver = false;
+    user = '';
+    machine = '';
+    
+    board.forEach(cell => {
+    cell.textContent = '';
+    });
+    modal.style.display = 'flex';
+}
+
+reset.addEventListener('click', resetGame);
