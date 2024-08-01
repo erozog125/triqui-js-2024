@@ -6,11 +6,15 @@ const optO = document.getElementById('btn-o')
 const resultMessage = document.getElementById('result-message')
 const reset = document.getElementById('reset') 
 
+
 // estas ya son la varibles si pueden cambiar
 let user = ''
 let machine = ''
 let boardGame = ['', '', '', '', '', '', '', '', '']
 let isGameOver = false
+let countUser = 0
+let countMachine = 0
+
 
 // bloquear selección después de empezar
 function closeModal(){ 
@@ -91,9 +95,22 @@ function checkWinner(){
     return null
 }
 
+function countWinner() {
+    const points = checkWinner()
+    if (user == points) {
+        countUser++ 
+        pointUser.textContent = "Puntos Usuario " + countUser
+    }
+    else {
+        countMachine ++ 
+        pointMachine.textContent = "Puntos Maquina " + countMachine
+    }
+}
+
 function validateGame(){
     const winner = checkWinner()
     if(winner) {
+        countWinner()
         showResult(`${winner} gana!`)
         isGameOver = true
         board.forEach((cell)=>{
@@ -114,8 +131,18 @@ function showResult(message){
     Swal.fire(message)
 }
 
+function updateScore(winner) {
+    if (winner === 'X') {
+        roundsUser++
+        pointUser.textContent = roundsX
+    } else if (winner === 'O') {
+        roundsO++
+        pointMachine.textContent = roundsO
+    }
+}
+
 function resetGame() {
-    // Restablecer el estado del juego
+    // Restablecer el estado del juego 
     boardGame = ['', '', '', '', '', '', '', '', ''];
     isGameOver = false;
     user = '';
