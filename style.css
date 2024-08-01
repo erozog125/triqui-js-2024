@@ -68,3 +68,9 @@ body {
     color: #fff;
     cursor: pointer
   }
+
+  .interface {
+    display: flex;
+    flex-direction: column;
+    gap: 1 rem;
+  }

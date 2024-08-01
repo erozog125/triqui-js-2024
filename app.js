@@ -105,7 +105,21 @@ function getRandomNumber(){
     return Math.floor(Math.random() * 9)
 }
 
+function resetGame() {
+    // Restablecer el estado del juego
+    boardGame = ['', '', '', '', '', '', '', '', ''];
+    isGameOver = false;
+    user = '';
+    machine = '';
+    
+    // Limpiar el tablero visualmente
+    board.forEach(cell => {
+    cell.textContent = '';
+    });
 
-// const numbers = [1, 2, 3, 4, 5];
-// const doubled = numbers.map(num => num * 2);
-// console.log(doubled); // Output: [2, 4, 6, 8, 10]
+    // Mostrar el modal para seleccionar X o O
+    modal.style.display = 'flex';
+}
+
+reset.addEventListener('click', resetGame);
+
