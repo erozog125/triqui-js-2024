@@ -50,7 +50,7 @@ function handleUserClick(i) {
         validateGame();
 
         if (!isGameOver) {
-            setTimeout(playMachine(), 1000)
+            setTimeout(playMachine(), 2000)
         }
     }
 }
@@ -104,4 +104,22 @@ function showResult(message) {
 function getRandomNumber() {
     return Math.floor(Math.random() * 9);
 
+function resetGame() {
+    boardGame = ["", "", "", "", "", "", "", "", ""];
+    isGameOver = false;
+    user = "";
+    machine = "";
+
+    // Limpiar el contenido de cada celda
+    board.forEach(cell => {
+        cell.textContent = "";
+        cell.addEventListener("click", handleUserClick);
+    });
+
+    // Mostrar el modal para elegir de nuevo 'X o O'
+    modal.style.display = "flex";
+    
+    // Limpiar el mensaje de resultado
+    resultMessage.textContent = "";
+    }
 }
