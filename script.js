@@ -2,6 +2,7 @@ const board = document.querySelectorAll(".cell");
 const modal = document.getElementById("modal");
 const optX = document.getElementById("btn-x");
 const optO = document.getElementById("btn-o");
+const resetButton = document.getElementById("resetGame");
 const resultMessage = document.getElementById("result-message"); // AÃ±ade un elemento para mostrar el resultado
 let user = "";
 let machine = "";
@@ -21,6 +22,10 @@ optO.addEventListener("click", () => {
     closeModal();
     playUser();
 });
+
+
+   //Reiniciar juego
+resetButton.addEventListener ("click", resetGame);
 
 function closeModal() {
     modal.style.display = "none";
@@ -103,6 +108,7 @@ function showResult(message) {
 
 function getRandomNumber() {
     return Math.floor(Math.random() * 9);
+}
 
 function resetGame() {
     boardGame = ["", "", "", "", "", "", "", "", ""];
@@ -116,10 +122,11 @@ function resetGame() {
         cell.addEventListener("click", handleUserClick);
     });
 
+    
     // Mostrar el modal para elegir de nuevo 'X o O'
     modal.style.display = "flex";
     
     // Limpiar el mensaje de resultado
     resultMessage.textContent = "";
-    }
 }
+
