@@ -1,0 +1,45 @@
+.button {
+    color: white;
+    background-color: #030303;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    line-height: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    cursor: pointer;
+    text-align: center;
+    margin-right: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    border: none;
+  }
+  
+  .button:hover {
+    background: rgb(208,33,18);
+background: linear-gradient(90deg, rgba(208,33,18,1) 12%, rgba(242,139,12,0.4235819327731093) 53%, rgba(6,122,131,1) 94%);
+  }
+  
+  .button svg {
+    display: inline;
+    width: 1.3rem;
+    height: 1.3rem;
+    margin-right: 0.75rem;
+    color: white;
+  }
+  
+  .button:focus svg {
+    animation: spin_357 0.5s linear;
+  }
+  
+  @keyframes spin_357 {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(360deg);
+    }
+  }  
