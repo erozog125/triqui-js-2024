@@ -16,7 +16,7 @@
         background-color: #3498db; /* Color de fondo azul */
     }
 
-    head{
+    head {
         text-align: center;
         font-size: 24px;
         font-weight: bold;
@@ -28,7 +28,7 @@
         gap: 2rem;
     }
 
-    #btnX,#btnY {
+    #btnX, #btnY {
         width: 2rem;
         height: 2rem;
         background-color: white;
@@ -42,19 +42,19 @@
 
     .board {
         display: grid;
-        grid-template-columns: repeat(3, 100px); /* 3 columnas de 100px cada una */
-        grid-template-rows: repeat(3, 100px); /* 3 filas de 100px cada una */
-        gap: 2px; /* Espacio entre las celdas */
-        background-color: white; /* Color de fondo del tablero */
-        padding: 10px; /* Espacio interno del tablero */
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+        grid-template-columns: repeat(3, 100px);
+        grid-template-rows: repeat(3, 100px);
+        gap: 2px;
+        background-color: white;
+        padding: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     }
 
     .cell {
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 2px solid #3498db; /* Borde azul */
+        border: 2px solid #3498db;
         font-size: 24px;
         font-weight: bold;
         cursor: pointer;
@@ -75,20 +75,20 @@
         </div>
     </head>
 
-  <div class="board">
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-  </div>
+    <div class="board">
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+    </div>
 
-  <button id="resetGame">Reiniciar juego</button>
+    <button id="resetGame">Reiniciar juego</button>
 
-  <script src="p.js"></script>
+    <script src="p.js"></script>
 </body>
 </html>
