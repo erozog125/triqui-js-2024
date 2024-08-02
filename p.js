@@ -84,9 +84,8 @@ function checkWinner() {
 
 function showResult(message) {
     Swal.fire({
-        title: message,
+        title: message, 
         text: 'Haz clic en "Reiniciar" para jugar de nuevo',
-        icon: 'info',
         confirmButtonText: 'Reiniciar',
     }).then((result) => {
         if (result.isConfirmed) {
