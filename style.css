@@ -12,7 +12,7 @@ body {
   grid-template-columns: repeat(3, 100px); /* 3 columnas de 100px cada una */
   grid-template-rows: repeat(3, 100px); /* 3 filas de 100px cada una */
   gap: 2px; /* Espacio entre las celdas */
-  background-color: white; /* Color de fondo del tablero */
+  background-color: #776e6e; /* Color de fondo del tablero */
   padding: 10px; /* Espacio interno del tablero */
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra ligera */
 }
@@ -21,7 +21,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid #3498db; /* Borde azul */
+  border: 2px solid #0f1011; /* Borde azul */
   font-size: 3rem;
   color: #fff;
   background-color: #243861;
@@ -31,7 +31,7 @@ body {
 }
 
 .cell:hover {
-  background-color: #3498db;
+  background-color: #0d0d0e;
   box-shadow: 0 0 5px #243861;
 }
 
@@ -47,7 +47,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: -4px -4px 0 rgba(14, 214, 241, 0.387);
+  box-shadow: -4px -4px 0 rgba(22, 24, 24, 0.387);
 }
 
 .modal > h2 {
@@ -96,6 +96,7 @@ button#reset {
   background-color: #776e6e;
   color: #fff;
   cursor: pointer;
+  font-weight: 600;
 }
 
 button#reset:hover {
