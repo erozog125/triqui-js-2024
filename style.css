@@ -1,76 +1,105 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #3498db; /* Color de fondo azul */
-  }
-  
-  .board {
-    display: grid;
-    grid-template-columns: repeat(3, 100px); /* 3 columnas de 100px cada una */
-    grid-template-rows: repeat(3, 100px); /* 3 filas de 100px cada una */
-    gap: 2px; /* Espacio entre las celdas */
-    background-color: white; /* Color de fondo del tablero */
-    padding: 10px; /* Espacio interno del tablero */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-  }
-  
-  .cell {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid #3498db; /* Borde azul */
-    font-size: 3rem;
-    color: #fff;
-    background-color: #0653f8;
-    font-weight: 800;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  .cell:hover {
-    background-color: #3498db;
-    box-shadow: 0 0 5px #0653f8;
-  }
-  
-  .modal {
-    width: 30rem;
-    height: 25rem;
-    border-radius: 10px;
-    background-color: #ffffffdb;
-    border: double 4px #262525;
-    position: absolute;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: -4px -4px 0 rgba(14, 214, 241, 0.387);
-  }
-  
-  .modal > h2 {
-    font-size: 2.5rem;
-    color: #0653f8;
-    text-align: center;
-  }
-  
-  .options > button {
-    width: 4rem;
-    height: 4rem;
-    font-size: 2rem;
-    font-weight: 800;
-  }
-  
-  .options > button:hover {
-    background-color: #07cb07e3;
-    color: #fff;
-    cursor: pointer
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #182935; /* Color de fondo azul */
+}
 
-  button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 1em;
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px); /* 3 columnas de 100px cada una */
+  grid-template-rows: repeat(3, 100px); /* 3 filas de 100px cada una */
+  gap: 2px; /* Espacio entre las celdas */
+  background-color: white; /* Color de fondo del tablero */
+  padding: 10px; /* Espacio interno del tablero */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #3498db; /* Borde azul */
+  font-size: 3rem;
+  color: #fff;
+  background-color: #243861;
+  font-weight: 800;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cell:hover {
+  background-color: #3498db;
+  box-shadow: 0 0 5px #243861;
+}
+
+.modal {
+  width: 30rem;
+  height: 25rem;
+  border-radius: 10px;
+  background-color: #ffffffdb;
+  border: double 4px #262525;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: -4px -4px 0 rgba(14, 214, 241, 0.387);
+}
+
+.modal > h2 {
+  font-size: 2.5rem;
+  color: #243861;
+  text-align: center;
+}
+
+.options > button {
+  width: 4rem;
+  height: 4rem;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.options > button:hover {
+  background-color: #776e6e;
+  color: #fff;
+  cursor: pointer;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+}
+
+.gameall {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.general1 {
+  display: flex;
+}
+
+.divpoints h2 {
+  padding: 0.5rem;
+  color: #fff;
+}
+
+button#reset {
+  border-radius: 2rem;
+  width: 50%;
+  background-color: #776e6e;
+  color: #fff;
+  cursor: pointer;
+}
+
+button#reset:hover {
+  background-color: #243861;
+  color: #fff;
+  cursor: pointer;
 }
