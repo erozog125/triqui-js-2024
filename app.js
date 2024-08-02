@@ -1,60 +1,93 @@
-const board = document.querySelectorAll('.cell');
+// Variables y constantes
+let tablero = ["", "", "", "", "", "", "", "", ""];
+let jugadorActual = "X";
+let juegoActivo = true;
+
+const celdas = document.querySelectorAll(".cell");
+const botonReiniciar = document.getElementById("reiniciar");
 const modal = document.getElementById('modal');
 const optX = document.getElementById('btn-x');
 const optO = document.getElementById('btn-o');
-const resultMessage = document.getElementById('result-message'); // Añade un elemento para mostrar el resultado
+const resultMessage = document.getElementById('result-message');
 
-let user = '';
-let machine = '';
-let boardGame = ['', '', '', '', '', '', '', '', ''];
-let isGameOver = false;
+const combinacionesGanadoras = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+];
+
+// Event Listeners
+celdas.forEach(celda => celda.addEventListener("click", manejarClickCelda));
+botonReiniciar.addEventListener("click", reiniciarJuego);
 
 optX.addEventListener('click', () => {
-    user = 'x';
-    machine = 'o';
+    jugadorActual = 'X';
     closeModal();
-    playUser();
 });
 
 optO.addEventListener('click', () => {
-    user = 'o';
-    machine = 'x';
+    jugadorActual = 'O';
     closeModal();
-    playUser();
 });
 
-// Función tradicional
-function add(a, b) {
-    return a + b;
+// Funciones
+function manejarClickCelda(event) {
+    const idCelda = event.target.id;
+    if (tablero[idCelda] === "" && juegoActivo) {
+        tablero[idCelda] = jugadorActual;
+        event.target.innerText = jugadorActual;
+        verificarResultado();
+        jugadorActual = jugadorActual === "X" ? "O" : "X";
+    }
 }
 
-// Función de flecha
-const addArrow = (a, b) => a + b;
+function verificarResultado() {
+    let rondaGanada = false;
+    for (let i = 0; i < combinacionesGanadoras.length; i++) {
+        const [a, b, c] = combinacionesGanadoras[i];
+        if (tablero[a] && tablero[a] === tablero[b] && tablero[a] === tablero[c]) {
+            rondaGanada = true;
+            break;
+        }
+    }
 
-const greet = name => `Hello, ${name}!`;
-console.log(greet('Alice')); // Output: Hello, Alice!
+    if (rondaGanada) {
+        mostrarResultado("¡El jugador " + jugadorActual + " ha ganado!");
+        juegoActivo = false;
+        return;
+    }
 
-const sum = (a, b) => {
-    return a + b;
-};
-console.log(sum(2, 3)); // Output: 5
-
-const getCurrentYear = () => new Date().getFullYear();
-console.log(getCurrentYear()); // Output: 2024 (o el año actual)
-
-const numbers = [1, 2, 3, 4, 5];
-const doubled = numbers.map(num => num * 2);
-console.log(doubled); // Output: [2, 4, 6, 8, 10]
-
-function multiply(x, y) {
-    return x * y;
+    if (!tablero.includes("")) {
+        mostrarResultado("¡Empate!");
+        juegoActivo = false;
+    }
 }
 
-const multiplyArrow = (x, y) => x * y;
+function reiniciarJuego() {
+    tablero = ["", "", "", "", "", "", "", "", ""];
+    juegoActivo = true;
+    jugadorActual = "X";
+    celdas.forEach(celda => celda.innerText = "");
+}
 
+function mostrarResultado(mensaje) {
+    resultMessage.innerText = mensaje;
+    Swal.fire(mensaje);
+}
+
+function closeModal() {
+    modal.style.display = 'none';
+}
+
+// Función para manejar la selección de jugador
 function playUser() {
-    board.forEach((cell, idx) => {
-        cell.addEventListener('click', handleUserClick.bind(null, idx));
+    celdas.forEach((celda, idx) => {
+        celda.addEventListener('click', handleUserClick.bind(null, idx));
     });
 }
 
@@ -62,78 +95,49 @@ function handleUserClick(index) {
     console.log('Celda clickeada con índice:', index);
 }
 
-const cells = [/* Elementos del DOM */];
-cells.forEach((cell, idx) => {
-    cell.addEventListener('click', handleUserClick.bind(null, idx));
-});
-
+// Función para la jugada de la máquina
 function playMachine() {
     let optmachine;
     do {
         optmachine = getRandomNumber();
-    } while (boardGame[optmachine] !== '' || isGameOver);
-    boardGame[optmachine] = machine;
-    validateGame();
+    } while (tablero[optmachine] !== '' || !juegoActivo);
+    tablero[optmachine] = jugadorActual;
+    validarJuego();
 }
 
-function handleUserClick(idx) {
-    if (!isGameOver && board[idx].textContent === '') {
-        board[idx].textContent = user;
-        boardGame[idx] = user;
-        validateGame();
-        if (!isGameOver) {
-            setTimeout(() => {
-                playMachine();
-            }, 1000);
-        }
-    }
-}
-
-function validateGame() {
-    const winner = checkWinner();
-    if (winner) {
-        showResult(`${winner} gana!`);
-        isGameOver = true;
-        board.forEach((cell) => {
-            cell.removeEventListener('click', handleUserClick);
+function validarJuego() {
+    const ganador = verificarGanador();
+    if (ganador) {
+        mostrarResultado(`${ganador} gana!`);
+        juegoActivo = false;
+        celdas.forEach((celda) => {
+            celda.removeEventListener('click', manejarClickCelda);
         });
-    } else if (!boardGame.includes('')) {
-        showResult('Empate');
-        isGameOver = true;
-        board.forEach((cell) => {
-            cell.removeEventListener('click', handleUserClick);
+    } else if (!tablero.includes('')) {
+        mostrarResultado('Empate');
+        juegoActivo = false;
+        celdas.forEach((celda) => {
+            celda.removeEventListener('click', manejarClickCelda);
         });
     } else {
         console.log('Pendiente');
     }
 }
 
-function checkWinner() {
-    const winningCombinations = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6]
-    ];
-
-    for (const combination of winningCombinations) {
-        const [a, b, c] = combination;
-        if (boardGame[a] === boardGame[b] && boardGame[b] === boardGame[c] && boardGame[a] !== '') {
-            return boardGame[a];
+function verificarGanador() {
+    for (const combinacion of combinacionesGanadoras) {
+        const [a, b, c] = combinacion;
+        if (tablero[a] === tablero[b] && tablero[b] === tablero[c] && tablero[a] !== '') {
+            return tablero[a];
         }
     }
     return null;
 }
 
-function showResult(message) {
-    Swal.fire(message);
-}
-
 function getRandomNumber() {
     return Math.floor(Math.random() * 9);
 }
+
+// Inicialización
+playUser();
 
