@@ -5,6 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
 <title>Tablero de Triqui - Gloria Bravo</title>
+<title>Tablero de Triqui</title>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #3498db; /* Color de fondo azul */
+    }
+
+    .cell {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid #3498db; /* Borde azul */
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .cell:hover {
+      background-color: #3498db;
+      box-shadow: 0 0 5px #0653f8;
+    }
+</style>
 </head>
 <body>
   <div class="board">
