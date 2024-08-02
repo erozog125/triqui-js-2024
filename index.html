@@ -1,48 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
-<title>Tablero de Triqui - Gloria Bravo</title>
-<title>Tablero de Triqui</title>
-<style>
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        background-color: #3498db; /* Color de fondo azul */
-    }
-
-    .cell {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 2px solid #3498db; /* Borde azul */
-        font-size: 24px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-
-    .cell:hover {
-      background-color: #3498db;
-      box-shadow: 0 0 5px #0653f8;
-    }
-</style>
-</head>
-<body>
-  <div class="board">
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-  </div>
-</body>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Triqui</title>
+    <link rel="stylesheet" href="Style.css" />
+  </head>
+  <body>
+    <div id="overlay">
+      <div id="overlay-content">
+        <h1>Welcome to the Game</h1>
+        <button id="startGame">Start Game</button>
+      </div>
+    </div>
+    <h1>Triqui Game</h1>
+    <p>Elige tu símbolo:</p>
+    <button id="chooseX">X</button>
+    <button id="chooseO">O</button>
+    <div>
+      <div id="modal">
+        <div id="modal-content">
+          <span id="closeModal" class="close">&times;</span>
+          <p id="modalMessage"></p>
+        </div>
+      </div>
+      <h3>Jugador (X) Ganadas: <span id="playerScore">0</span></h3>
+      <h3>Máquina (O) Ganadas: <span id="aiScore">0</span></h3>
+    </div>
+    <div class="board" id="board">
+      <div class="cell" data-index="0"></div>
+      <div class="cell" data-index="1"></div>
+      <div class="cell" data-index="2"></div>
+      <div class="cell" data-index="3"></div>
+      <div class="cell" data-index="4"></div>
+      <div class="cell" data-index="5"></div>
+      <div class="cell" data-index="6"></div>
+      <div class="cell" data-index="7"></div>
+      <div class="cell" data-index="8"></div>
+    </div>
+    <button id="restart">Reiniciar Juego</button>
+    <script src="app.js"></script>
+  </body>
 </html>
